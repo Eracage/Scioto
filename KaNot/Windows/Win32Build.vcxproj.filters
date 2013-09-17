@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{86c4e994-d122-45e7-be0a-9eb12e0c6bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{0e813a38-3931-459e-8c81-5b832275d032}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\include">
+      <UniqueIdentifier>{ebdc43fc-6a8a-4d8d-8ba9-e4fa9b33abf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\src">
+      <UniqueIdentifier>{cc0c7c7e-559e-44f2-9948-064f511405af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows\include">
+      <UniqueIdentifier>{7441ad06-d34b-477b-98b6-02840beccbdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows\src">
+      <UniqueIdentifier>{7c7e2db9-cb14-4fa5-a18d-b77b8b9c0a0b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\OpenGL.h">
+      <Filter>Windows\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Win32toAndroid.h">
+      <Filter>Windows\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Window.h">
+      <Filter>Windows\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Engine.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h" />
+    <ClInclude Include="..\Common\include\Debug.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\OpenGL.cpp">
+      <Filter>Windows\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Windows\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WinMain.cpp">
+      <Filter>Windows\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Engine.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="math.cpp" />
+  </ItemGroup>
+</Project>
