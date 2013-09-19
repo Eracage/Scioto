@@ -4,7 +4,7 @@
 namespace Scioto
 {
 
-
+	
 	class vector
 	{
 	public:
@@ -25,6 +25,7 @@ namespace Scioto
 		vector &operator +=(const vector& RightVal);
 		vector &operator -=(const vector& RightVal);
 
+
 		vector operator /(float RightVal);
 		vector &operator /=(float RightVal);
 
@@ -34,7 +35,10 @@ namespace Scioto
 		friend vector operator *(const vector& LeftVal, const float RightVal);
 		friend vector operator *(const float LeftVal, const vector& RightVal);
 
+		//square operator +(const triangle& a, const triangle& b)
+
 		friend const vector &operator *=(vector& LeftVal, const float RightVal);
+
 
 	private:
 
