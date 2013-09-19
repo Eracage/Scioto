@@ -188,3 +188,4 @@ proguard/
 *.BuildConfig.java
 KaNot/libs/*
 */libKaNot.so
+KaNot/libs/armeabi/libKaNot.so
