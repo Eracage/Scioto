@@ -13,14 +13,14 @@
   <ItemGroup>
     <ClInclude Include="..\Common\include\Debug.h" />
     <ClInclude Include="..\Common\include\Engine.h" />
+    <ClInclude Include="..\Common\include\math.h" />
     <ClInclude Include="include\OpenGL.h" />
     <ClInclude Include="include\Win32toAndroid.h" />
     <ClInclude Include="include\Window.h" />
-    <ClInclude Include="math.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\src\Engine.cpp" />
-    <ClCompile Include="math.cpp" />
+    <ClCompile Include="..\Common\src\math.cpp" />
     <ClCompile Include="src\OpenGL.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\WinMain.cpp" />

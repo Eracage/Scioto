@@ -33,8 +33,10 @@
     <ClInclude Include="..\Common\include\Engine.h">
       <Filter>Common\include</Filter>
     </ClInclude>
-    <ClInclude Include="math.h" />
     <ClInclude Include="..\Common\include\Debug.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\math.h">
       <Filter>Common\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -51,6 +53,8 @@
     <ClCompile Include="..\Common\src\Engine.cpp">
       <Filter>Common\src</Filter>
     </ClCompile>
-    <ClCompile Include="math.cpp" />
+    <ClCompile Include="..\Common\src\math.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
