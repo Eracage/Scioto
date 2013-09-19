@@ -23,7 +23,8 @@ LOCAL_C_INCLUDES:= 	$(LOCAL_PATH)/../Android/include \
 					$(LOCAL_PATH)/../Common/include
 
 LOCAL_SRC_FILES := 	../Android/src/gl_code.cpp \
-					../Common/src/Engine.cpp
+					../Common/src/Engine.cpp \
+					../Common/src/Math.cpp
 					
 					
 LOCAL_LDLIBS    := -llog -lGLESv2
