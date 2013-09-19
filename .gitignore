@@ -187,3 +187,4 @@ proguard/
 *.project.properties
 *.BuildConfig.java
 KaNot/libs/*
+*/libKaNot.so
