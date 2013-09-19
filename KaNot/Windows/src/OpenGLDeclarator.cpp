@@ -4,7 +4,7 @@
  *
  * OpenGL 2.1 function declarations
  */
-#include <OpenGL.h>
+#include <OpenGLDeclarator.h>
 
 #define LOAD_OPENGL_FUNCTION(type, name)										\
 	name = (PFNGL##type##PROC)wglGetProcAddress(#name);							\

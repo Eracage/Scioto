@@ -13,8 +13,10 @@
   <ItemGroup>
     <ClInclude Include="..\Common\include\Debug.h" />
     <ClInclude Include="..\Common\include\Engine.h" />
+    <ClInclude Include="..\Common\include\OpenGL.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Math.h" />
-    <ClInclude Include="include\OpenGL.h" />
+    <ClInclude Include="..\Common\include\Shader.h" />
+    <ClInclude Include="include\OpenGLDeclarator.h" />
     <ClInclude Include="include\Win32toAndroid.h" />
     <ClInclude Include="include\Window.h" />
   </ItemGroup>
@@ -22,9 +24,11 @@
     <ClCompile Include="..\Android\src\gl_code.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\Common\src\Debug.cpp" />
     <ClCompile Include="..\Common\src\Engine.cpp" />
     <ClCompile Include="..\Common\src\Math.cpp" />
-    <ClCompile Include="src\OpenGL.cpp" />
+    <ClCompile Include="..\Common\src\Shader.cpp" />
+    <ClCompile Include="src\OpenGLDeclarator.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
   </ItemGroup>

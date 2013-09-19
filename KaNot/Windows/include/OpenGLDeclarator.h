@@ -5,8 +5,8 @@
  * OpenGL 2.1 function declarations
  */
 
-#ifndef OPENGL_H
-#define OPENGL_H
+#ifndef OPENGLDECLARATOR_H
+#define OPENGLDECLARATOR_H
 
 #include <Windows.h>
 #include <GL/GL.h>

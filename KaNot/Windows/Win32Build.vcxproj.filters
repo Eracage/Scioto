@@ -33,9 +33,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\OpenGL.h">
-      <Filter>Windows\include</Filter>
-    </ClInclude>
     <ClInclude Include="include\Win32toAndroid.h">
       <Filter>Windows\include</Filter>
     </ClInclude>
@@ -51,11 +48,17 @@
     <ClInclude Include="..\Common\include\Sciotomath\Math.h">
       <Filter>Common\include\Sciotomath</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\Shader.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OpenGLDeclarator.h">
+      <Filter>Windows\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\OpenGL.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\OpenGL.cpp">
-      <Filter>Windows\src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Window.cpp">
       <Filter>Windows\src</Filter>
     </ClCompile>
@@ -70,6 +73,15 @@
     </ClCompile>
     <ClCompile Include="..\Android\src\gl_code.cpp">
       <Filter>Android\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Debug.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Shader.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLDeclarator.cpp">
+      <Filter>Windows\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
