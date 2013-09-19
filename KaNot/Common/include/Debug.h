@@ -19,6 +19,6 @@ void PrintToOutput(bool error, const char* format, ...);
 
 void checkGlError(const char* op);
 
-
+void printGLString(const char *name, GLenum s);
 
 #endif

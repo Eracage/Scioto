@@ -1,6 +1,7 @@
 #include <Debug.h>
+#include <stdarg.h>
 
-
+#ifdef _WIN32
 void PrintToOutput(bool error, const char* format, ...)
 {
 	va_list args;
@@ -16,10 +17,16 @@ void PrintToOutput(bool error, const char* format, ...)
 		OutputDebugStringA(" --(ERROR)-- ");
 	OutputDebugStringA(message);
 }
+#endif
 
 void checkGlError(const char* op) {
     for (GLint error = glGetError(); error; error = glGetError()) 
 	{
         LOGI("after %s() glError (0x%x)\n", op, error);
     }
+}
+
+void printGLString(const char *name, GLenum s) {
+    const char *v = (const char *) glGetString(s);
+    LOGI("GL %s = %s\n", name, v);
 }
