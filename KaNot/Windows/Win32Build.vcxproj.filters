@@ -19,6 +19,9 @@
     <Filter Include="Windows\src">
       <UniqueIdentifier>{7c7e2db9-cb14-4fa5-a18d-b77b8b9c0a0b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\include\Sciotomath">
+      <UniqueIdentifier>{b6d4250c-d594-4e8d-adbf-2dbf02930fa9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\OpenGL.h">
@@ -36,8 +39,8 @@
     <ClInclude Include="..\Common\include\Debug.h">
       <Filter>Common\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\include\Math.h">
-      <Filter>Common\include</Filter>
+    <ClInclude Include="..\Common\include\Sciotomath\Math.h">
+      <Filter>Common\include\Sciotomath</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@
   <ItemGroup>
     <ClInclude Include="..\Common\include\Debug.h" />
     <ClInclude Include="..\Common\include\Engine.h" />
-    <ClInclude Include="..\Common\include\Math.h" />
+    <ClInclude Include="..\Common\include\Sciotomath\Math.h" />
     <ClInclude Include="include\OpenGL.h" />
     <ClInclude Include="include\Win32toAndroid.h" />
     <ClInclude Include="include\Window.h" />
