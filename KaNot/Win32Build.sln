@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win32Build", "Windows\Win32Build.vcxproj", "{60BCB1AE-0266-4DC5-94F8-A96AFD68F206}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AndroidBuild", "AndroidBuild\AndroidBuild.vcxproj", "{212B2BEA-CF49-4461-BBE0-B4B935C392AA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,9 +13,6 @@ Global
 		{60BCB1AE-0266-4DC5-94F8-A96AFD68F206}.Debug|Win32.Build.0 = Debug|Win32
 		{60BCB1AE-0266-4DC5-94F8-A96AFD68F206}.Release|Win32.ActiveCfg = Release|Win32
 		{60BCB1AE-0266-4DC5-94F8-A96AFD68F206}.Release|Win32.Build.0 = Release|Win32
-		{212B2BEA-CF49-4461-BBE0-B4B935C392AA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{212B2BEA-CF49-4461-BBE0-B4B935C392AA}.Release|Win32.ActiveCfg = Release|Win32
-		{212B2BEA-CF49-4461-BBE0-B4B935C392AA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

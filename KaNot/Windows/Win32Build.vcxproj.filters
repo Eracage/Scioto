@@ -22,6 +22,15 @@
     <Filter Include="Common\include\Sciotomath">
       <UniqueIdentifier>{b6d4250c-d594-4e8d-adbf-2dbf02930fa9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Android">
+      <UniqueIdentifier>{0e60b025-a097-4113-ae25-b3f41e897745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Android\include">
+      <UniqueIdentifier>{0a03d8a1-9df2-4e07-9aa5-3daaa79f97cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Android\src">
+      <UniqueIdentifier>{02432eac-f630-45a9-ac64-3f80b1c6d4fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\OpenGL.h">
@@ -58,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="..\Common\src\Math.cpp">
       <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Android\src\gl_code.cpp">
+      <Filter>Android\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
