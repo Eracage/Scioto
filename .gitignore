@@ -188,4 +188,4 @@ proguard/
 *.BuildConfig.java
 
 
-KaNot/libs/
+libs/

@@ -26,7 +26,7 @@ void Engine::Draw()
   
     //Draw 
     glClearColor(0,0,1,1); 
-    #ifndef ANDROID_FRAMEWORK 
+    #ifdef _WIN32 
     glClearDepth(1); 
     #else 
     glClearDepthf(1); 

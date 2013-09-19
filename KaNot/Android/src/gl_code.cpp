@@ -1,4 +1,4 @@
-*
+/*
  * Copyright (C) 2009 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -119,9 +119,9 @@
 //    }
 //    return program;
 //}
-
-GLuint gProgram;
-GLuint gvPositionHandle;
+//
+//GLuint gProgram;
+//GLuint gvPositionHandle;
 Engine* engine;
 
 bool setupGraphics(int w, int h) {
@@ -129,23 +129,23 @@ bool setupGraphics(int w, int h) {
     printGLString("Vendor", GL_VENDOR);
     printGLString("Renderer", GL_RENDERER);
     printGLString("Extensions", GL_EXTENSIONS);
+/*
+    LOGI("setupGraphics(%d, %d)", w, h);*/
+    //gProgram = createProgram(gVertexShader, gFragmentShader);
+    //if (!gProgram) {
+    //    LOGE("Could not create program.");
+    //    return false;
+    //}
+    //gvPositionHandle = glGetAttribLocation(gProgram, "vPosition");
+    //checkGlError("glGetAttribLocation");
+    //LOGI("glGetAttribLocation(\"vPosition\") = %d\n",
+    //        gvPositionHandle);
 
-    LOGI("setupGraphics(%d, %d)", w, h);
-    gProgram = createProgram(gVertexShader, gFragmentShader);
-    if (!gProgram) {
-        LOGE("Could not create program.");
-        return false;
-    }
-    gvPositionHandle = glGetAttribLocation(gProgram, "vPosition");
-    checkGlError("glGetAttribLocation");
-    LOGI("glGetAttribLocation(\"vPosition\") = %d\n",
-            gvPositionHandle);
-
-    glViewport(0, 0, w, h);
-    checkGlError("glViewport");
+    //glViewport(0, 0, w, h);
+    //checkGlError("glViewport");
 	//int testiarvo = 9001;
 	//LOGI("Testi arvo on: %d", testiarvo);
-	//engine = new Engine();
+	engine = new Engine();
 	//LOGI("Enginen testiluku on: %d", engine->testiluku);
     return true;
 }
