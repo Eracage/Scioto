@@ -5,39 +5,39 @@ namespace Scioto
 {
 
 	
-	class vector
+	class Vector
 	{
 	public:
-		vector();
-		vector(float X, float Y);
-		~vector();
+		Vector();
+		Vector(float X, float Y);
+		~Vector();
 
 		float getLenght();
 		float getAngle();
 
 		float x,y;
 
-		vector operator -();
+		Vector operator -();
 
-		vector operator +(const vector& RightVal);
-		vector operator -(const vector& RightVal);
+		Vector operator +(const Vector& RightVal);
+		Vector operator -(const Vector& RightVal);
 
-		vector &operator +=(const vector& RightVal);
-		vector &operator -=(const vector& RightVal);
+		Vector &operator +=(const Vector& RightVal);
+		Vector &operator -=(const Vector& RightVal);
 
 
-		vector operator /(float RightVal);
-		vector &operator /=(float RightVal);
+		Vector operator /(float RightVal);
+		Vector &operator /=(float RightVal);
 
-		bool operator ==(const vector& RightVal);
-		bool operator !=(const vector& RightVal);
+		bool operator ==(const Vector& RightVal);
+		bool operator !=(const Vector& RightVal);
 
-		friend vector operator *(const vector& LeftVal, const float RightVal);
-		friend vector operator *(const float LeftVal, const vector& RightVal);
+		friend Vector operator *(const Vector& LeftVal, const float RightVal);
+		friend Vector operator *(const float LeftVal, const Vector& RightVal);
 
 		//square operator +(const triangle& a, const triangle& b)
 
-		friend const vector &operator *=(vector& LeftVal, const float RightVal);
+		friend const Vector &operator *=(Vector& LeftVal, const float RightVal);
 
 
 	private:
@@ -45,19 +45,19 @@ namespace Scioto
 	};
 
 
-	class rectangle
+	class Rectangle
 	{
 	public:
 
-		rectangle();
-		rectangle(float Left, float Top, float Width, float Height);
-		rectangle(vector Position, float Width, float Height);
-		rectangle(vector Position, vector Size);
+		Rectangle();
+		Rectangle(float Left, float Top, float Width, float Height);
+		Rectangle(Vector Position, float Width, float Height);
+		Rectangle(Vector Position, Vector Size);
 
-		bool intersects(rectangle Rectangle);
-		bool contains(vector Position);
+		bool intersects(Rectangle rectangle);
+		bool contains(Vector Position);
 
-		~rectangle();
+		~Rectangle();
 		float width, height, left, top;
 
 	private:
@@ -68,3 +68,69 @@ namespace Scioto
 }
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//#ifndef VECTOR_H
+//#define VECTOR_H
+//#include <SFML\System\Vector2.hpp>
+//#include <iostream>
+//#include <ostream>
+//
+//namespace EGEMath
+//{
+//
+//class Vector
+//{
+//public:
+//	Vector(void);
+//	Vector(float X, float Y);
+//	Vector(sf::Vector2f sfVector);
+//	Vector(sf::Vector2i sfVector);
+//	Vector(sf::Vector2u sfVector);
+//	~Vector(void);
+//
+//	float getLenght();
+//	float getAngle();
+//	Vector Normalize();
+//	void rotate(float Degrees);
+//
+//	float x,y;
+//};
+//
+//Vector operator -(const Vector& RightVal);
+//
+//Vector operator +(const Vector& LeftVal,const Vector& RightVal);
+//Vector operator -(const Vector& LeftVal,const Vector& RightVal);
+//
+//Vector operator +=(Vector& LeftVal,const Vector& RightVal);
+//Vector operator -=(Vector& LeftVal,const Vector& RightVal);
+//
+//Vector operator /(const Vector& LeftVal,const float& RightVal);
+//Vector operator /=(Vector& LeftVal,const float& RightVal);
+//
+//bool operator ==(const Vector& LeftVal,const Vector& RightVal);
+//bool operator !=(const Vector& LeftVal,const Vector& RightVal);
+//
+//Vector operator *(const Vector& LeftVal, const float& RightVal);
+//Vector operator *(const float& LeftVal, const Vector& RightVal);
+//
+//const Vector operator *=(Vector& LeftVal, const float& RightVal);
+//
+//std::ostream& operator <<(std::ostream& Ostr, const Vector& RightVal);
+//
+//}
+//
+//#endif
