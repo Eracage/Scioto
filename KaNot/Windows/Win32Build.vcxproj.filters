@@ -31,6 +31,9 @@
     <Filter Include="Android\src">
       <UniqueIdentifier>{02432eac-f630-45a9-ac64-3f80b1c6d4fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\src\Sciotomath">
+      <UniqueIdentifier>{26a240d8-408e-447a-b192-827ac562eafe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Win32toAndroid.h">
@@ -57,6 +60,21 @@
     <ClInclude Include="..\Common\include\OpenGL.h">
       <Filter>Common\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\Sciotomath\Rectangle.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Sciotomath\Vector.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Sciotomath\Vector2.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Sciotomath\Vector3.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Sciotomath\Vector4.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -66,9 +84,6 @@
       <Filter>Windows\src</Filter>
     </ClCompile>
     <ClCompile Include="..\Common\src\Engine.cpp">
-      <Filter>Common\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Common\src\Math.cpp">
       <Filter>Common\src</Filter>
     </ClCompile>
     <ClCompile Include="..\Android\src\gl_code.cpp">
@@ -82,6 +97,18 @@
     </ClCompile>
     <ClCompile Include="src\OpenGLDeclarator.cpp">
       <Filter>Windows\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Sciotomath\Rectangle.cpp">
+      <Filter>Common\src\Sciotomath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Sciotomath\Vector3.cpp">
+      <Filter>Common\src\Sciotomath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Sciotomath\Vector2.cpp">
+      <Filter>Common\src\Sciotomath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Sciotomath\Vector4.cpp">
+      <Filter>Common\src\Sciotomath</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

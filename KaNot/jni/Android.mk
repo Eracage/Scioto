@@ -27,6 +27,10 @@ LOCAL_SRC_FILES := 	../Android/src/gl_code.cpp \
 					../Common/src/Engine.cpp \
 					../Common/src/Math.cpp \
 					../Common/src/Shader.cpp
+					../Common/src/Sciotomath/Rectangle.cpp\
+					../Common/src/Sciotomath/Vector2.cpp\
+					../Common/src/Sciotomath/Vector3.cpp\
+					../Common/src/Sciotomath/Vector4.cpp\
 					
 					
 LOCAL_LDLIBS    := -llog -lGLESv2
