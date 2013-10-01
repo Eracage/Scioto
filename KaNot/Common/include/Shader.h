@@ -16,18 +16,21 @@ public:
 	GLuint loadShader(GLenum shaderType, const char* pSource);
 
 	//Declare gl object "handles" 
-    GLuint VBO; 
-    GLuint PS,VS; 
-    GLuint Program;
 		
     //amount of vertices for the object
     unsigned int num_vertices;
 
 	GLfloat* Data;
 
+    GLuint VBO; 
+    GLuint PS,VS; 
+    GLuint Program;
 
 private:
 	Shader(Shader& shader);
+
+	void CheckForCompileError(const GLenum& shaderType, GLenum& shader);
+	
 };
 
 

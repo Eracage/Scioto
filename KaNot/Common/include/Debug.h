@@ -17,7 +17,7 @@ void PrintToOutput(bool error, const char* format, ...);
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 #endif
 
-void checkGlError(const char* op);
+void checkGlError(const char* ErrorPlaceName);
 
 void printGLString(const char *name, GLenum s);
 
