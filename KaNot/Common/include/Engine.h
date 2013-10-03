@@ -11,9 +11,17 @@ class Engine
 		~Engine();
 		void Update();
 		void Draw();
-		static void printGLString(const char *name, GLenum s);
-		static void checkGlError(const char* op);
 
 		Scioto::Shader* shader;
+
+
+
+		//////////////////////////////////////////////////////// TEMP
+		//amount of vertices for the object
+		unsigned int num_vertices;
+
+		GLfloat* Data;
+		
+		GLuint VBO;
 };
 #endif

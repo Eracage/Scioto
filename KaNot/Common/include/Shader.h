@@ -14,15 +14,7 @@ public:
 	~Shader();
 
 	GLuint loadShader(GLenum shaderType, const char* pSource);
-
-	//Declare gl object "handles" 
-		
-    //amount of vertices for the object
-    unsigned int num_vertices;
-
-	GLfloat* Data;
-
-    GLuint VBO; 
+ 
     GLuint PS,VS; 
     GLuint Program;
 

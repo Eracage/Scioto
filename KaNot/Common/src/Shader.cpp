@@ -3,54 +3,13 @@
 
 using namespace Scioto;
 
-Shader::Shader()
+Shader::Shader(const char VertexShaderCode[], const char FragmentShaderCode[])
 {
-    num_vertices = 6*3;
-
-    Data = (GLfloat*)malloc(sizeof(GLfloat)*num_vertices);
-
-    float v = 0.5f;
-
-    Data[0] = -v;
-    Data[1] = -v;
-    Data[2] = 0;
-
-    Data[3] = -v;
-    Data[4] = v;
-    Data[5] = 0;
-
-    Data[6] = v;
-    Data[7] = -v;
-    Data[8] = 0;
-
-    Data[9] = -v;
-    Data[10] = v;
-    Data[11] = 0;
-
-    Data[12] = v;
-    Data[13] = v;
-    Data[14] = 0;
-
-    Data[15] = v;
-    Data[16] = -v;
-    Data[17] = 0;
 	
-	
-	static const char gVertexShader[] = 
-    "attribute vec4 vPosition;\n"
-    "void main() {\n"
-    "  gl_Position = vPosition;\n"
-    "}\n";
-
-	static const char gFragmentShader[] = 
-    "precision mediump float;\n"
-    "void main() {\n"
-    "  gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);\n"
-    "}\n";
 	
     //compile shader codes
-    PS = loadShader(GL_FRAGMENT_SHADER,gFragmentShader);
-    VS = loadShader(GL_VERTEX_SHADER,gVertexShader);
+    VS = loadShader(GL_VERTEX_SHADER,VertexShaderCode);
+    PS = loadShader(GL_FRAGMENT_SHADER,FragmentShaderCode);
 
 	
     //make the shader program;
@@ -66,15 +25,8 @@ Shader::Shader()
 
     //finalize shader
     glLinkProgram(Program);
-
-    //create VBO
-    glGenBuffers(1,&VBO);
-
-    glBindBuffer(GL_ARRAY_BUFFER,VBO);
-
-    glBufferData(GL_ARRAY_BUFFER,sizeof(Data)*num_vertices,Data,GL_DYNAMIC_DRAW);
-
 }
+
 Shader::~Shader()
 {}
 
