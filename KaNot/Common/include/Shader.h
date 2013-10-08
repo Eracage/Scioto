@@ -10,10 +10,9 @@ namespace Scioto
 class Shader
 {
 public:
-	Shader();
+	Shader(const char*,const char*);
 	~Shader();
 
-	GLuint loadShader(GLenum shaderType, const char* pSource);
  
     GLuint PS,VS; 
     GLuint Program;
@@ -21,6 +20,7 @@ public:
 private:
 	Shader(Shader& shader);
 
+	GLuint loadShader(GLenum shaderType, const char* pSource);
 	void CheckForCompileError(const GLenum& shaderType, GLenum& shader);
 	
 };
