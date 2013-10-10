@@ -3,6 +3,7 @@
 // for Android version of the file, see jni/FileReader.cpp/.h
 
 #include <FileReader.h>
+#include <fstream>
 
 
 FileReader::FileReader(const char* path)
@@ -30,4 +31,9 @@ bool FileReader::ReadBytes(unsigned int count,void*buffer)
 		if(fread(buffer, 1,count,file)==count)
 			return true;
 	return false;
+}
+
+bool FileReader::LoadFile(const char* path, void* buffer)
+{
+	std::ofstream file;
 }

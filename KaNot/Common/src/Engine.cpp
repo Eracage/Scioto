@@ -83,7 +83,7 @@ void Engine::Draw()
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
     glBindBuffer(GL_ARRAY_BUFFER,VBO);
-    int position = glGetAttribLocation(shader->Program,"position");
+    //int position = glGetAttribLocation(shader->Program,"position");
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(GL_FLOAT),0);
     glUseProgram(shader->Program);

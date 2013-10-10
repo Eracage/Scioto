@@ -1,7 +1,7 @@
 #ifndef FILE_READER
 #define FILE_READER
-#include <stdio.h>
-#include <string>
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
 class FileReader
 {
 	public:
@@ -10,13 +10,9 @@ class FileReader
 		
 		bool FileSeek(int offset,int relation);
 		bool ReadBytes(unsigned int count,void*buffer);
-
-
-		static bool LoadFile(const char* path, void* buffer);
-
 	private:
-		FILE* file;
-		std::string FilePath;
+		static AAssetManager * mgr;
+		AAsset* asset;
 };
 
 #endif
