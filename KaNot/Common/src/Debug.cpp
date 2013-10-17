@@ -19,10 +19,10 @@ void PrintToOutput(bool error, const char* format, ...)
 }
 #endif
 
-void checkGlError(const char* op) {
+void checkGlError(const char* ErrorPlaceName) {
     for (GLint error = glGetError(); error; error = glGetError()) 
 	{
-        LOGI("after %s() glError (0x%x)\n", op, error);
+        LOGI("At error check %s() glError (0x%x)\n", ErrorPlaceName, error);
     }
 }
 

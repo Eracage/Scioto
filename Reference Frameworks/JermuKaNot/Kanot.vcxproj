@@ -10,49 +10,10 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Android\include\FileReader.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="..\Common\include\Debug.h" />
-    <ClInclude Include="..\Common\include\Engine.h" />
-    <ClInclude Include="..\Common\include\OpenGL.h" />
-    <ClInclude Include="..\Common\include\Sciotomath\Math.h" />
-    <ClInclude Include="..\Common\include\Sciotomath\Rectangle.h" />
-    <ClInclude Include="..\Common\include\Sciotomath\Vector.h" />
-    <ClInclude Include="..\Common\include\Sciotomath\Vector2.h" />
-    <ClInclude Include="..\Common\include\Sciotomath\Vector3.h" />
-    <ClInclude Include="..\Common\include\Sciotomath\Vector4.h" />
-    <ClInclude Include="..\Common\include\Shader.h" />
-    <ClInclude Include="include\FileReader.h" />
-    <ClInclude Include="include\OpenGLDeclarator.h" />
-    <ClInclude Include="include\Win32toAndroid.h" />
-    <ClInclude Include="include\Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Android\src\FileReader.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\Android\src\gl_code.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\Common\src\Debug.cpp" />
-    <ClCompile Include="..\Common\src\Engine.cpp" />
-    <ClCompile Include="..\Common\src\Sciotomath\Rectangle.cpp" />
-    <ClCompile Include="..\Common\src\Sciotomath\Vector2.cpp" />
-    <ClCompile Include="..\Common\src\Sciotomath\Vector3.cpp" />
-    <ClCompile Include="..\Common\src\Sciotomath\Vector4.cpp" />
-    <ClCompile Include="..\Common\src\Shader.cpp" />
-    <ClCompile Include="src\FileReader.cpp" />
-    <ClCompile Include="src\OpenGLDeclarator.cpp" />
-    <ClCompile Include="src\Window.cpp" />
-    <ClCompile Include="src\WinMain.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{60BCB1AE-0266-4DC5-94F8-A96AFD68F206}</ProjectGuid>
+    <ProjectGuid>{502579A8-1194-41C1-8A76-4139C4D475B6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Win32Build</RootNamespace>
-    <ProjectName>Win32Build</ProjectName>
+    <RootNamespace>Kanot</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,15 +50,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)..\Common\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)jni\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PostBuildEvent>
-      <Command>$(SolutionDir)..\..\cygwin\cygwin.bat</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -108,7 +66,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)..\Common\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)jni\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,10 +74,21 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
-    <PostBuildEvent>
-      <Command>$(SolutionDir)..\..\cygwin\cygwin.bat</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="jni\Engine.cpp" />
+    <ClCompile Include="OpenGL.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="jni\Engine.h" />
+    <ClInclude Include="OpenGL.h" />
+    <ClInclude Include="Win32toAndroid.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

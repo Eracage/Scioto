@@ -45,9 +45,6 @@
     <ClInclude Include="..\Common\include\Engine.h">
       <Filter>Common\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\include\Debug.h">
-      <Filter>Common\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Common\include\Sciotomath\Math.h">
       <Filter>Common\include\Sciotomath</Filter>
     </ClInclude>
@@ -74,6 +71,15 @@
     </ClInclude>
     <ClInclude Include="..\Common\include\Sciotomath\Vector4.h">
       <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileReader.h">
+      <Filter>Windows\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Debug.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Android\include\FileReader.h">
+      <Filter>Android\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +115,12 @@
     </ClCompile>
     <ClCompile Include="..\Common\src\Sciotomath\Vector4.cpp">
       <Filter>Common\src\Sciotomath</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileReader.cpp">
+      <Filter>Windows\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Android\src\FileReader.cpp">
+      <Filter>Android\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

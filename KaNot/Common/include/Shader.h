@@ -10,24 +10,19 @@ namespace Scioto
 class Shader
 {
 public:
-	Shader();
+	Shader(const char*,const char*);
 	~Shader();
 
-	GLuint loadShader(GLenum shaderType, const char* pSource);
-
-	//Declare gl object "handles" 
-    GLuint VBO; 
+ 
     GLuint PS,VS; 
     GLuint Program;
-		
-    //amount of vertices for the object
-    unsigned int num_vertices;
-
-	GLfloat* Data;
-
 
 private:
 	Shader(Shader& shader);
+
+	GLuint loadShader(GLenum shaderType, const char* pSource);
+	void CheckForCompileError(const GLenum& shaderType, GLenum& shader);
+	
 };
 
 
