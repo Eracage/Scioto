@@ -82,7 +82,7 @@ GLubyte* FileReader::loadTGA(const std::string& fileName, tgaHeader &header)
     AAsset_close(asset);
 #else
         std::ifstream file;
-        file.open("assets/" + fileName, std::ios::binary);
+        file.open("../Assets/" + fileName, std::ios::binary);
 
         file.read((char*)&header.idLength, 1);
         file.read((char*)&header.colorMapType, 1);
