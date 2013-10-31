@@ -81,6 +81,9 @@
     <ClInclude Include="..\Android\include\FileReader.h">
       <Filter>Android\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\Viewport.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -121,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="..\Android\src\FileReader.cpp">
       <Filter>Android\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Viewport.cpp">
+      <Filter>Common\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

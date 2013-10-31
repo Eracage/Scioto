@@ -24,6 +24,7 @@
     <ClInclude Include="..\Common\include\Sciotomath\Vector3.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Vector4.h" />
     <ClInclude Include="..\Common\include\Shader.h" />
+    <ClInclude Include="..\Common\include\Viewport.h" />
     <ClInclude Include="include\FileReader.h" />
     <ClInclude Include="include\OpenGLDeclarator.h" />
     <ClInclude Include="include\Win32toAndroid.h" />
@@ -43,6 +44,7 @@
     <ClCompile Include="..\Common\src\Sciotomath\Vector3.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Vector4.cpp" />
     <ClCompile Include="..\Common\src\Shader.cpp" />
+    <ClCompile Include="..\Common\src\Viewport.cpp" />
     <ClCompile Include="src\FileReader.cpp" />
     <ClCompile Include="src\OpenGLDeclarator.cpp" />
     <ClCompile Include="src\Window.cpp" />

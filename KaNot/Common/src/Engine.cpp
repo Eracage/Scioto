@@ -3,7 +3,7 @@
 
 using namespace Scioto;
 
-Engine::Engine()
+Engine::Engine(float ContextWidht, float ContextHeight)
 {
 	const char gVertexShader[] = 
     "attribute vec3 vPosition;\n"
@@ -26,7 +26,7 @@ Engine::Engine()
     "}\n"; 
 
 	shader = new Shader(gVertexShader,gFragmentShader);
-
+	viewport = new Viewport(800,800,ContextWidht, ContextHeight);
 
 
 

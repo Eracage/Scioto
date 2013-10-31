@@ -2,12 +2,13 @@
 #include <string>
 #include <OpenGL.h>
 #include <Engine.h>
+#include <Viewport.h>
 #pragma comment(lib, "opengl32.lib")
 
 HWND Window::handle;
 HGLRC Window::OGLcontext;
 HDC Window::hdc;
-float Window::SCALE, Window::BLACKBARH, Window::BLACKBARV;
+//float Window::SCALE, Window::BLACKBARH, Window::BLACKBARV;
 
 Window::Window(HINSTANCE instance,const char* windowName,int width,int height)
 {
@@ -93,11 +94,8 @@ Window::Window(HINSTANCE instance,const char* windowName,int width,int height)
 	}
 	
 	LoadOpenGLFunctions(); // Loads OpenGL 2.1 functions
-	glViewport(0, 0, width, height); // Sets up the OpenGL viewport
-	FIXASPECTRATIO(width,height+2,width,height);
-
 	MSG msg ={};
-	Engine* engine = new Engine();
+	Engine* engine = new Engine(width, height);
 	// Main message loop:
 	while(msg.message != WM_QUIT)
 	{
@@ -136,39 +134,4 @@ LRESULT CALLBACK Window::wEventsProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 			return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 1;
-}
-
-
-
-void Window::FIXASPECTRATIO(float desiredWidth,float desiredHeight,float width,float height)
-{
-	//Calculate desired Aspect Ratio
-	float dAR =  desiredWidth/ desiredHeight;
-
-	//Calculate real Aspect Ratio
-	float rAR = width/height;
-	float w,h;
-	//Check Aspect Ratio's
-	if(dAR==rAR)
-	{
-		//Same aspect, no letterboxing needed!
-		SCALE = width/desiredWidth;
-	}
-	else if(dAR<rAR)
-	{
-		//Horizontal letterboxing needed!
-		SCALE = height/desiredHeight;
-		BLACKBARH = (width-SCALE*desiredWidth)/2;
-		
-	}
-	else
-	{
-		//Vertical letterboxing needed!
-		SCALE = width/desiredWidth;
-		BLACKBARV = (height-(SCALE*desiredHeight))/2;
-	}
-	 w = desiredWidth*SCALE;
-	 h = desiredHeight*SCALE;
-
-	glViewport((int)BLACKBARH, (int)BLACKBARV,(int)w,(int)h); // Sets up the OpenGL viewport
 }

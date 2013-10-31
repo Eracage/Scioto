@@ -3,18 +3,19 @@
 
 #include <Debug.h>
 #include <Shader.h>
-
-#include "FileReader.h"
+#include <Viewport.h>
+#include <FileReader.h>
 
 class Engine
 {
 	public:
-		Engine();
+		Engine(float ContextWidht, float ContextHeight);
 		~Engine();
 		void Update();
 		void Draw();
 
 		Scioto::Shader* shader;
+		Scioto::Viewport* viewport;
 
 
 
