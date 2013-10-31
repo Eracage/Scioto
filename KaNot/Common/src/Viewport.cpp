@@ -3,16 +3,33 @@
 
 namespace Scioto
 {
-
 	float Viewport::m_scale, Viewport::m_blackbarH, Viewport::m_blackbarV;
 
 	Viewport::Viewport(float desiredWidth,float desiredHeight,float width,float height)
 	{
 		FixAspectRatio(desiredWidth, desiredHeight, width, height);
+		
+		float Projection[16] = 
+		{
+			 1.0f/desiredWidth, 0,	0,	-1
+			,0,	1.0f/desiredHeight,	0,1
+			,0,	0,	1,	0
+			,0,	0,	0,	1
+		};
+
+		setProjection(Projection);
 	}
 
 	Viewport::~Viewport()
 	{}
+	
+	void Viewport::setProjection(const float projectionMatrix[16])
+	{
+		for (int i = 0; i < 16; i++)
+		{
+			m_projection[i] = projectionMatrix[i];
+		}
+	}
 
 	void Viewport::FixAspectRatio(float desiredWidth,float desiredHeight,float width,float height)
 	{

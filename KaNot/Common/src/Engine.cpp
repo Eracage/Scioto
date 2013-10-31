@@ -25,8 +25,19 @@ Engine::Engine(float ContextWidht, float ContextHeight)
     "  gl_FragColor = texture2D(s_texture,Uv);\n"
     "}\n"; 
 
+	//float Projection[16] = 
+	//{
+	//	 1.0f/1024.0f, 0,	0,	-1
+	//	,0,	1.0f/768.0f,	0,1
+	//	,0,	0,	1,	0
+	//	,0,	0,	0,	1
+	//};
+
 	shader = new Shader(gVertexShader,gFragmentShader);
 	viewport = new Viewport(800,800,ContextWidht, ContextHeight);
+	//viewport->setProjection(Projection);
+	
+
 
 
 
@@ -150,45 +161,15 @@ Engine::Engine(float ContextWidht, float ContextHeight)
 
     glBufferData(GL_ARRAY_BUFFER,sizeof(Data)*num_vertices,Data,GL_DYNAMIC_DRAW);
 	checkGlError("BindBuffer");
-	Position = glGetAttribLocation(shader->Program,"vPosition");
-	Uv = glGetAttribLocation(shader->Program,"vUv");
-	loc = glGetUniformLocation(shader->Program, "s_texture");
-	loc2 = glGetUniformLocation(shader->Program, "Projection");
-	loc3 = glGetUniformLocation(shader->Program, "Translation");
+
+
+
+	////////////////////////texturestuff
+
+
+
 
 	GLubyte* pixels = Scioto::FileReader::loadTGA("Test.tga",header);
-
-	//FileReader *FR = new FileReader("Test.tga");
-	
-	//unsigned char*buffer = (unsigned char*)malloc(sizeof(unsigned char)*4);
-	//move to position 12, next 4 bytes are size
-	//
-	/*FR->FileSeek(12,0);
-	FR->ReadBytes(4,buffer);
-	int sizex= buffer[0]+buffer[1]*256;
-	int sizey= buffer[2]+buffer[3]*256;
-	free(buffer);
-	
-	buffer = (unsigned char*)malloc(sizeof(unsigned char)*1);
-	FR->FileSeek(16,0);
-	FR->ReadBytes(1,buffer);
-	int bpp = buffer[0];
-	free(buffer);
-	
-	int datasize = sizex*sizey*bpp/8;
-	pixels = (unsigned char*)malloc(sizeof(unsigned char)*datasize);
-	unsigned char *Buffer = (unsigned char*)malloc(sizeof(unsigned char)*datasize);
-	
-	FR->FileSeek(18,0);
-	FR->ReadBytes(datasize,Buffer);	
-	for(int i = 0;i<datasize;i+=4)
-	{
-		pixels[i+0] = Buffer[i+2];
-		pixels[i+1] = Buffer[i+1];
-		pixels[i+2] = Buffer[i+0];
-		pixels[i+3] = Buffer[i+3];
-	}
-	delete FR;*/
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glGenTextures(1,&Texture);
@@ -207,12 +188,9 @@ Engine::Engine(float ContextWidht, float ContextHeight)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
-	GLfloat Projection[16] = 
-	{
-		 1.0f/1024.0f, 0,	0,	-1
-		,0,	1.0f/768.0f,	0,1
-		,0,	0,	1,	0
-		,0,	0,	0,	1};
+
+
+	////////////////////matrixes
 
 	GLfloat Translation[16] = 
 	{
@@ -242,30 +220,8 @@ Engine::Engine(float ContextWidht, float ContextHeight)
 	GlTranslation[13] = Translation[13];
 	GlTranslation[14] = Translation[14];
 	GlTranslation[15] = Translation[15];
-
-	GlProjection = (GLfloat*)malloc(4*4*sizeof(float));
-	GlProjection[0] = Projection[0];
-	GlProjection[1] = Projection[1];
-	GlProjection[2] = Projection[2];
-	GlProjection[3] = Projection[3];
-	
-	GlProjection[4] = Projection[4];
-	GlProjection[5] = Projection[5];
-	GlProjection[6] = Projection[6];
-	GlProjection[7] = Projection[7];
-
-	GlProjection[8] = Projection[8];
-	GlProjection[9] = Projection[9];
-	GlProjection[10] = Projection[10];
-	GlProjection[11] = Projection[11];
-
-	GlProjection[12] = Projection[12];
-	GlProjection[13] = Projection[13];
-	GlProjection[14] = Projection[14];
-	GlProjection[15] = Projection[15];
 	checkGlError("EndOfInit");
 
-	//1,5,9,13,2,6,10,14,3,7,11,15,4,8,12,16
 	position = 0;
 	sine = 0;
 
@@ -295,8 +251,8 @@ void Engine::Draw()
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
 	
-	glEnableVertexAttribArray(Position);    
-	glEnableVertexAttribArray(Uv);    
+	glEnableVertexAttribArray(shader->Position);    
+	glEnableVertexAttribArray(shader->Uv);    
 	glUseProgram(shader->Program);
 
 glEnable (GL_BLEND);
@@ -306,13 +262,13 @@ glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, Texture);
 
-	glUniform1i(loc, 0);
-    glVertexAttribPointer(Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
-	glVertexAttribPointer(Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
+	glUniform1i(shader->loc, 0);
+    glVertexAttribPointer(shader->Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
+	glVertexAttribPointer(shader->Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
 	GlTranslation[3] += position;
 	GlTranslation[7] += std::sin(sine*2)*10;
-	glUniformMatrix4fv(loc2,1,GL_FALSE,GlProjection);
-	glUniformMatrix4fv(loc3,1,GL_FALSE,GlTranslation);
+	glUniformMatrix4fv(shader->loc2,1,GL_FALSE,viewport->m_projection);
+	glUniformMatrix4fv(shader->loc3,1,GL_FALSE,GlTranslation);
 	glBindBuffer(GL_ARRAY_BUFFER,VBO2); 
     glDrawArrays(GL_TRIANGLES,0,num_vertices); 
 	checkGlError("draw");
@@ -320,23 +276,15 @@ glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, Texture);
 	
-	glUniform1i(loc, 0); 
+	glUniform1i(shader->loc, 0); 
 
 
 	
-	glUniformMatrix4fv(loc2,1,GL_FALSE,GlProjection);
-	glUniformMatrix4fv(loc3,1,GL_FALSE,GlTranslation);
-	glVertexAttribPointer(Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
-	glVertexAttribPointer(Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
+	glUniformMatrix4fv(shader->loc2,1,GL_FALSE,viewport->m_projection);
+	glUniformMatrix4fv(shader->loc3,1,GL_FALSE,GlTranslation);
+	glVertexAttribPointer(shader->Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
+	glVertexAttribPointer(shader->Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
 
 	glBindBuffer(GL_ARRAY_BUFFER,VBO); 
     glDrawArrays(GL_TRIANGLES,0,num_vertices);  
-
-
-    //glBindBuffer(GL_ARRAY_BUFFER,VBO);
-    ////int position = glGetAttribLocation(shader->Program,"position");
-    //glEnableVertexAttribArray(0);
-    //glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(GL_FLOAT),0);
-    //glUseProgram(shader->Program);
-    //glDrawArrays(GL_TRIANGLES,0,num_vertices);
 }

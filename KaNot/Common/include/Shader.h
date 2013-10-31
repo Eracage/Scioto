@@ -14,8 +14,9 @@ public:
 	~Shader();
 
  
-    GLuint PS,VS; 
+    GLuint PS,VS,Position,Uv;
     GLuint Program;
+	GLint loc,loc2,loc3;
 
 private:
 	Shader(Shader& shader);

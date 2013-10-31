@@ -108,13 +108,10 @@ Window::Window(HINSTANCE instance,const char* windowName,int width,int height)
 		}
 		else // We've processed all pending Win32 messages, and can now do a rendering update.
 		{
-
-			
-		
+			engine->Update();
+			engine->Draw();
+			SwapBuffers(Window::hdc); // Swaps display buffers
 		}
-		engine->Update();
-		engine->Draw();
-		SwapBuffers(Window::hdc); // Swaps display buffers
 	}
 }
 

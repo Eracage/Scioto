@@ -9,9 +9,14 @@ namespace Scioto
 		Viewport(float desiredWidth,float desiredHeight,float width,float height);
 		~Viewport();
 
-		void FixAspectRatio(float desiredWidth,float desiredHeight,float width,float height);
+		void setProjection(const float projectionMatrix[16]);
 
+		float m_projection[16];
+
+	private:
 		static float m_scale, m_blackbarH, m_blackbarV;
+
+		void FixAspectRatio(float desiredWidth,float desiredHeight,float width,float height);
 	};
 }
 

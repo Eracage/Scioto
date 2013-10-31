@@ -21,8 +21,9 @@ class Engine
 
 		//////////////////////////////////////////////////////// TEMP
 		
-		GLuint PS,VS,Position,Uv,Texture;
-		GLint loc,loc2,loc3;
+		//GLuint PS,VS,Position,Uv,Texture;
+		//GLint loc,loc2,loc3;
+		GLuint Texture;
 		GLfloat* GlProjection;
 		GLfloat* GlTranslation;
 		float position;
