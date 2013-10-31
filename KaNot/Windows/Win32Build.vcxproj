@@ -11,11 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Android\include\FileReader.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="..\Common\include\Debug.h" />
     <ClInclude Include="..\Common\include\Engine.h" />
+    <ClInclude Include="..\Common\include\FileReader.h" />
     <ClInclude Include="..\Common\include\OpenGL.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Math.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Rectangle.h" />
@@ -25,27 +23,23 @@
     <ClInclude Include="..\Common\include\Sciotomath\Vector4.h" />
     <ClInclude Include="..\Common\include\Shader.h" />
     <ClInclude Include="..\Common\include\Viewport.h" />
-    <ClInclude Include="include\FileReader.h" />
     <ClInclude Include="include\OpenGLDeclarator.h" />
     <ClInclude Include="include\Win32toAndroid.h" />
     <ClInclude Include="include\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Android\src\FileReader.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\Android\src\gl_code.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Common\src\Debug.cpp" />
     <ClCompile Include="..\Common\src\Engine.cpp" />
+    <ClCompile Include="..\Common\src\FileReader.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Rectangle.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Vector2.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Vector3.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Vector4.cpp" />
     <ClCompile Include="..\Common\src\Shader.cpp" />
     <ClCompile Include="..\Common\src\Viewport.cpp" />
-    <ClCompile Include="src\FileReader.cpp" />
     <ClCompile Include="src\OpenGLDeclarator.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\WinMain.cpp" />

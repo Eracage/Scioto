@@ -7,10 +7,16 @@
 #include <fstream>
 #include <sstream>
 
+#if __ANDROID__
+#include <android/asset_manager.h>
+#endif
+
 #include "Debug.h"
 
 namespace Scioto
 {
+
+
 	struct tgaHeader
 	{
 		GLubyte idLength;
@@ -25,6 +31,10 @@ namespace Scioto
 	class FileReader
 	{
 	public:
+
+#if __ANDROID__
+static AAssetManager* A_Manager;
+#endif
 
 		FileReader();
 		~FileReader();

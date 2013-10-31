@@ -76,6 +76,5 @@ JNIEXPORT void JNICALL Java_com_android_KaNot_KaNotLib_step(JNIEnv * env, jobjec
 
 JNIEXPORT void JNICALL Java_com_android_KaNot_KaNotLib_GetManager(JNIEnv* env, jclass clazz, jobject assetManager)
 {
-    AAssetManager* mgr = AAssetManager_fromJava(env, assetManager);
-	FileReader::mgr = mgr;
+    A_Manager = AAssetManager_fromJava(env, assetManager);
 }

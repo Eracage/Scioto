@@ -17,22 +17,22 @@ std::string FileReader::loadFile(const std::string& fileLocation)
         }
         else
         {
-                LOGI("File not found from %c", &fileLocation);
+                LOGE("File not found from %c", &fileLocation);
                 myFile.close();
                 return "";
         }
 #elif __ANDROID__
-        AAsset* asset = AAssetManager_open(LostCause::AssetManager::manager, fileLocation.c_str(), AASSET_MODE_UNKNOWN);
+        AAsset* asset = AAssetManager_open(Scioto::AssetManager::A_Manager, fileLocation.c_str(), AASSET_MODE_UNKNOWN);
         off_t length = AAsset_getLength(asset);
         char* text = new char[length+1];
         if(AAsset_read(asset, text, length) < 1)
         {
-                debug.write("File not loaded or EOF!");
+                LOGE("File not loaded or EOF!");
         }
         AAsset_close(asset);
         text[length] = 0;
         std::string r(text);
-        debug.write(r.c_str());
+        //LOGI("%s", r);
         delete text;
         return r;
 #endif
@@ -41,7 +41,7 @@ std::string FileReader::loadFile(const std::string& fileLocation)
 GLubyte* FileReader::loadTGA(const std::string& fileName, tgaHeader &header)
 {
 #if __ANDROID__
-        AAsset* asset = AAssetManager_open(AssetManager::manager, fileName.c_str(), AASSET_MODE_UNKNOWN);
+        AAsset* asset = AAssetManager_open(Scioto::AssetManager::A_Manager, fileName.c_str(), AASSET_MODE_UNKNOWN);
 
     AAsset_read(asset, &header.idLength, 1);
     AAsset_read(asset, &header.colorMapType, 1);
@@ -53,13 +53,13 @@ GLubyte* FileReader::loadTGA(const std::string& fileName, tgaHeader &header)
     AAsset_read(asset, &header.descriptor, 1);
     AAsset_seek(asset, header.idLength, SEEK_CUR);
     
-    debug.write("ID_LENGTH: %d", header.idLength);
-    debug.write("COLOR_MAP_TYPE: %d", header.colorMapType);
-    debug.write("TYPE: %d", header.type);
-    debug.write("WIDTH: %d", header.width);
-    debug.write("HEIGHT: %d", header.height);
-    debug.write("DEPTH: %d", header.depth);
-    debug.write("DESCCRIPTOR: %d", header.descriptor);
+    LOGI("ID_LENGTH: %d", header.idLength);
+    LOGI("COLOR_MAP_TYPE: %d", header.colorMapType);
+    LOGI("TYPE: %d", header.type);
+    LOGI("WIDTH: %d", header.width);
+    LOGI("HEIGHT: %d", header.height);
+    LOGI("DEPTH: %d", header.depth);
+    LOGI("DESCCRIPTOR: %d", header.descriptor);
     
     //24bit / 8 = 3 (RGB), 32bit / 8 = 4 (RGBA)
     int componentCount = header.depth/8;

@@ -10,7 +10,7 @@ Shader::Shader(const char VertexShaderCode[], const char FragmentShaderCode[])
     //compile shader codes
     VS = loadShader(GL_VERTEX_SHADER,VertexShaderCode);
     PS = loadShader(GL_FRAGMENT_SHADER,FragmentShaderCode);
-	
+	 
     //make the shader program;
     Program = glCreateProgram();
 	

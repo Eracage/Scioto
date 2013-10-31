@@ -23,19 +23,10 @@ Engine::Engine(float ContextWidht, float ContextHeight)
 	"uniform sampler2D s_texture;\n"
     "void main() {\n"
     "  gl_FragColor = texture2D(s_texture,Uv);\n"
-    "}\n"; 
-
-	//float Projection[16] = 
-	//{
-	//	 1.0f/1024.0f, 0,	0,	-1
-	//	,0,	1.0f/768.0f,	0,1
-	//	,0,	0,	1,	0
-	//	,0,	0,	0,	1
-	//};
+    "}\n";
 
 	shader = new Shader(gVertexShader,gFragmentShader);
 	viewport = new Viewport(800,800,ContextWidht, ContextHeight);
-	//viewport->setProjection(Projection);
 	
 
 
