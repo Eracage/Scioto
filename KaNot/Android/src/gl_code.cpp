@@ -25,14 +25,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <android/asset_manager_jni.h>
-#include <android/asset_manager.h>
 #include <FileReader.h>
 
 #include <Engine.h>
 
 Engine* engine;
-AAssetManager* Scioto::FileReader::A_Manager = 0;
+//AAssetManager* Scioto::FileReader::A_Manager = 0;
 
 bool setupGraphics(int w, int h) {
     printGLString("Version", GL_VERSION);

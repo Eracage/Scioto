@@ -1,11 +1,15 @@
 #include "FileReader.h"
 
+#ifdef __ANDROID__
+AAssetManager* Scioto::FileReader::A_Manager = NULL;
+#endif
+
 using namespace Scioto;
 //Protected
 std::string FileReader::loadFile(const std::string& fileLocation)
 {
 	std::stringstream stream;
-#if WIN32
+#ifdef WIN32
         stream.str("");
         myFile.open("assets/" + fileLocation,std::ios::in);
 
@@ -21,8 +25,9 @@ std::string FileReader::loadFile(const std::string& fileLocation)
                 myFile.close();
                 return "";
         }
-#elif __ANDROID__
-        AAsset* asset = AAssetManager_open(Scioto::AssetManager::A_Manager, fileLocation.c_str(), AASSET_MODE_UNKNOWN);
+#endif
+#ifdef __ANDROID__
+        AAsset* asset = AAssetManager_open(Scioto::FileReader::A_Manager, fileLocation.c_str(), AASSET_MODE_UNKNOWN);
         off_t length = AAsset_getLength(asset);
         char* text = new char[length+1];
         if(AAsset_read(asset, text, length) < 1)
@@ -40,8 +45,47 @@ std::string FileReader::loadFile(const std::string& fileLocation)
 
 GLubyte* FileReader::loadTGA(const std::string& fileName, tgaHeader &header)
 {
-#if __ANDROID__
-        AAsset* asset = AAssetManager_open(Scioto::AssetManager::A_Manager, fileName.c_str(), AASSET_MODE_UNKNOWN);
+#ifdef WIN32
+        std::ifstream file;
+        file.open("../Assets/" + fileName, std::ios::binary);
+
+        file.read((char*)&header.idLength, 1);
+        file.read((char*)&header.colorMapType, 1);
+        file.read((char*)&header.type, 1);
+        file.seekg(9, std::ios_base::cur);
+        file.read((char*)&header.width, 2);
+        file.read((char*)&header.height, 2);
+        file.read((char*)&header.depth, 1);
+        file.read((char*)&header.descriptor, 1);
+        file.seekg(header.idLength, std::ios_base::cur);
+
+        LOGI("ID_LENGTH: %d", header.idLength);
+		LOGI("COLOR_MAP_TYPE: %d", header.colorMapType);
+		LOGI("TYPE: %d", header.type);
+		LOGI("WIDTH: %d", header.width);
+		LOGI("HEIGHT: %d", header.height);
+		LOGI("DEPTH: %d", header.depth);
+		LOGI("DESCCRIPTOR: %d", header.descriptor);
+
+    int componentCount = header.depth/8;
+    
+    int size = componentCount * header.width * header.height;
+    GLubyte* data = new GLubyte[size];
+    
+        file.read((char*)data, size);
+
+    for(int i = 0; i < size; i += componentCount)
+    {
+        GLubyte temp = data[i];
+        
+        data[i] = data[i+2];
+        data[i+2] = temp;
+    }
+    
+        file.close();
+#endif
+#ifdef __ANDROID__
+        AAsset* asset = AAssetManager_open(Scioto::FileReader::A_Manager, fileName.c_str(), AASSET_MODE_UNKNOWN);
 
     AAsset_read(asset, &header.idLength, 1);
     AAsset_read(asset, &header.colorMapType, 1);
@@ -80,44 +124,6 @@ GLubyte* FileReader::loadTGA(const std::string& fileName, tgaHeader &header)
     }
     
     AAsset_close(asset);
-#else
-        std::ifstream file;
-        file.open("../Assets/" + fileName, std::ios::binary);
-
-        file.read((char*)&header.idLength, 1);
-        file.read((char*)&header.colorMapType, 1);
-        file.read((char*)&header.type, 1);
-        file.seekg(9, std::ios_base::cur);
-        file.read((char*)&header.width, 2);
-        file.read((char*)&header.height, 2);
-        file.read((char*)&header.depth, 1);
-        file.read((char*)&header.descriptor, 1);
-        file.seekg(header.idLength, std::ios_base::cur);
-
-        LOGI("ID_LENGTH: %d", header.idLength);
-		LOGI("COLOR_MAP_TYPE: %d", header.colorMapType);
-		LOGI("TYPE: %d", header.type);
-		LOGI("WIDTH: %d", header.width);
-		LOGI("HEIGHT: %d", header.height);
-		LOGI("DEPTH: %d", header.depth);
-		LOGI("DESCCRIPTOR: %d", header.descriptor);
-
-    int componentCount = header.depth/8;
-    
-    int size = componentCount * header.width * header.height;
-    GLubyte* data = new GLubyte[size];
-    
-        file.read((char*)data, size);
-
-    for(int i = 0; i < size; i += componentCount)
-    {
-        GLubyte temp = data[i];
-        
-        data[i] = data[i+2];
-        data[i+2] = temp;
-    }
-    
-        file.close();
 #endif
         return data;
 }

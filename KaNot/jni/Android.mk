@@ -34,6 +34,6 @@ LOCAL_SRC_FILES := 	../Android/src/gl_code.cpp \
 					../Common/src/Sciotomath/Vector4.cpp
 					
 					
-LOCAL_LDLIBS    := -llog -lGLESv2
+LOCAL_LDLIBS    := -llog -lGLESv2 -landroid
 
 include $(BUILD_SHARED_LIBRARY)

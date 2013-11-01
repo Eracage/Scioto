@@ -7,7 +7,8 @@
 #include <fstream>
 #include <sstream>
 
-#if __ANDROID__
+#ifdef __ANDROID__
+#include <android/asset_manager_jni.h>
 #include <android/asset_manager.h>
 #endif
 
