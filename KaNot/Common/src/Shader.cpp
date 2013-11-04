@@ -20,6 +20,7 @@ Shader::Shader(const char VertexShaderCode[], const char FragmentShaderCode[])
 
     //bind position string to attrib at loc 0
     glBindAttribLocation(Program,0,"position");
+	glBindAttribLocation(Program,1,"Uv"); 
 
     //finalize shader
     glLinkProgram(Program);
@@ -29,6 +30,8 @@ Shader::Shader(const char VertexShaderCode[], const char FragmentShaderCode[])
 	loc = glGetUniformLocation(Program, "s_texture");
 	loc2 = glGetUniformLocation(Program, "Projection");
 	loc3 = glGetUniformLocation(Program, "Translation");
+	loc4 = glGetUniformLocation(Program, "Rotation");
+	loc5 = glGetUniformLocation(Program, "Scale");
 }
 
 Shader::~Shader()

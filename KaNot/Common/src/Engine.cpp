@@ -10,10 +10,15 @@ Engine::Engine(float ContextWidht, float ContextHeight)
 	"attribute vec2 vUv;\n"
 	"uniform mat4 Projection;\n"
 	"uniform mat4 Translation;\n"
+	"uniform mat4 Scale;\n"
+	"uniform mat4 Rotation;\n"
 	"varying vec2 Uv;\n"
     "void main() {\n"
 	"  gl_Position = vec4(vPosition,1.0);\n"
-	"  gl_Position *= Translation*Projection;\n"	
+	//"  gl_Position *= Scale;\n"	
+	//"  gl_Position *= Rotation;\n"	
+	"  gl_Position *= Translation;\n"	
+	"  gl_Position *= Projection;\n"	
 	"  Uv = vUv;\n"
     "}\n";
 
@@ -260,6 +265,10 @@ glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	GlTranslation[7] += std::sin(sine*2)*10;
 	glUniformMatrix4fv(shader->loc2,1,GL_FALSE,viewport->m_projection);
 	glUniformMatrix4fv(shader->loc3,1,GL_FALSE,GlTranslation);
+
+
+
+
 	glBindBuffer(GL_ARRAY_BUFFER,VBO2); 
     glDrawArrays(GL_TRIANGLES,0,num_vertices); 
 	checkGlError("draw");

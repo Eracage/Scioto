@@ -1,3 +1,4 @@
+#pragma once
 #ifndef SHADER_H
 #define SHADER_H
 
@@ -16,7 +17,7 @@ public:
  
     GLuint PS,VS,Position,Uv;
     GLuint Program;
-	GLint loc,loc2,loc3;
+	GLuint loc,loc2,loc3,loc4,loc5;
 
 private:
 	Shader(Shader& shader);

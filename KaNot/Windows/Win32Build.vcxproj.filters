@@ -81,6 +81,12 @@
     <ClInclude Include="..\Common\include\FileReader.h">
       <Filter>Common\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\Texture.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Sprite.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -120,6 +126,12 @@
       <Filter>Common\src</Filter>
     </ClCompile>
     <ClCompile Include="..\Common\src\FileReader.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Texture.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Sprite.cpp">
       <Filter>Common\src</Filter>
     </ClCompile>
   </ItemGroup>

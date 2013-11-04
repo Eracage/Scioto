@@ -1,3 +1,4 @@
+#pragma once
 #ifndef ENGINE
 #define ENGINE
 
@@ -21,14 +22,14 @@ class Engine
 
 		//////////////////////////////////////////////////////// TEMP
 		
-		//GLuint PS,VS,Position,Uv,Texture;
-		//GLint loc,loc2,loc3;
+		Scioto::tgaHeader header;
 		GLuint Texture;
+
 		GLfloat* GlProjection;
 		GLfloat* GlTranslation;
+
 		float position;
 		float sine;
-		Scioto::tgaHeader header;
 
 
 		//amount of vertices for the object
