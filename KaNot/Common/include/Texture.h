@@ -4,6 +4,8 @@
 
 #include <Debug.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string>
 
 namespace Scioto
 {

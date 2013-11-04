@@ -27,6 +27,8 @@ LOCAL_SRC_FILES := 	../Android/src/gl_code.cpp \
 					../Common/src/Engine.cpp \
 					../Common/src/FileReader.cpp \
 					../Common/src/Shader.cpp \
+					../Common/src/Sprite.cpp \
+					../Common/src/Texture.cpp \
 					../Common/src/Viewport.cpp \
 					../Common/src/Sciotomath/Rectangle.cpp\
 					../Common/src/Sciotomath/Vector2.cpp\

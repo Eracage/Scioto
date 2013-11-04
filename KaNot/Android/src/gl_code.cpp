@@ -29,7 +29,7 @@
 
 #include <Engine.h>
 
-Engine* engine;
+Scioto::Engine* engine;
 //AAssetManager* Scioto::FileReader::A_Manager = 0;
 
 bool setupGraphics(int w, int h) {
@@ -38,7 +38,7 @@ bool setupGraphics(int w, int h) {
     printGLString("Renderer", GL_RENDERER);
     printGLString("Extensions", GL_EXTENSIONS);
 
-	engine = new Engine(w,h);
+	engine = new Scioto::Engine(w,h);
     return true;
 }
 

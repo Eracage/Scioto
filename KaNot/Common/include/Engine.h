@@ -6,37 +6,42 @@
 #include <Shader.h>
 #include <Viewport.h>
 #include <FileReader.h>
+#include <Sprite.h>
 
-class Engine
+namespace Scioto
 {
-	public:
-		Engine(float ContextWidht, float ContextHeight);
-		~Engine();
-		void Update();
-		void Draw();
+	class Engine
+	{
+		public:
+			Engine(float ContextWidht, float ContextHeight);
+			~Engine();
+			void Update();
+			void Draw();
 
-		Scioto::Shader* shader;
-		Scioto::Viewport* viewport;
+			Scioto::Shader* shader;
+			Scioto::Viewport* viewport;
 
+			Texture2D* m_texture;
+			Sprite* m_sprites[1000];
 
-
-		//////////////////////////////////////////////////////// TEMP
+			//////////////////////////////////////////////////////// TEMP
 		
-		Scioto::tgaHeader header;
-		GLuint Texture;
+			//Scioto::tgaHeader header;
+			//GLuint Texture;
 
-		GLfloat* GlProjection;
-		GLfloat* GlTranslation;
+			//GLfloat* GlProjection;
+			//GLfloat* GlTranslation;
 
-		float position;
-		float sine;
+			//float position;
+			//float sine;
 
 
-		//amount of vertices for the object
-		unsigned int num_vertices;
+			////amount of vertices for the object
+			//unsigned int num_vertices;
 
-		GLfloat* Data;
-		
-		GLuint VBO, VBO2;
-};
+			//GLfloat* Data;
+			//
+			//GLuint VBO, VBO2;
+	};
+}
 #endif

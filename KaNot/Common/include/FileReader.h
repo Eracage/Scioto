@@ -17,8 +17,6 @@
 
 namespace Scioto
 {
-
-
 	struct tgaHeader
 	{
 		GLubyte idLength;

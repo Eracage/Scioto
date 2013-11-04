@@ -4,8 +4,6 @@
 namespace Scioto
 {
 	Texture2D::Texture2D()
-		: m_texture(NULL),
-		  Pixels(NULL)
 	{}
 
 	Texture2D::Texture2D(const std::string& FileName)

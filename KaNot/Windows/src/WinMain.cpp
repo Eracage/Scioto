@@ -3,6 +3,6 @@
 #include <Windows.h>
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) 
 {
-	Window * window = new Window(hInstance,"MyWindow",1600,800);
+	Scioto::Window * window = new Scioto::Window(hInstance,"MyWindow",800,800);
 	return 0;
 }

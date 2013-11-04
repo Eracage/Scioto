@@ -10,6 +10,7 @@ namespace Scioto
 	Sprite::Sprite(Texture2D* texture)
 	{
 		init();
+		setTexture(texture);
 	}
 	Sprite::~Sprite(){}
 	void Sprite::setTexture(Texture2D* texture)
@@ -42,7 +43,7 @@ namespace Scioto
 	void Sprite::setRotation(float Radians)
 	{
 		m_radians = Radians;
-
+		
 		m_rotation[0] = std::cos(-Radians);
 		m_rotation[1] = -std::sin(-Radians);
 		m_rotation[4] = std::sin(-Radians);
