@@ -21,6 +21,8 @@ namespace Scioto
 			Scioto::Shader* shader;
 			Scioto::Viewport* viewport;
 			
+			Texture2D* m_backTexture;
+			Sprite* m_background;
 			Texture2D* m_texture;
 			Texture2D* m_texture2;
 			Sprite* m_sprites[1000];

@@ -189,3 +189,4 @@ proguard/
 
 
 libs/
+*/.settings*

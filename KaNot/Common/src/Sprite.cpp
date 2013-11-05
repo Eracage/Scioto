@@ -27,7 +27,7 @@ namespace Scioto
 		m_translation[0] = 1;
 		m_translation[3] = (int)Position.x;
 		m_translation[5] = 1;
-		m_translation[7] = (int)Position.y;
+		m_translation[7] = (int)-Position.y;
 		m_translation[10] = 1;
 		m_translation[15] = 1;
 	}
