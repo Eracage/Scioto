@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\include\Debug.h" />
+    <ClInclude Include="..\Common\include\Drawable.h" />
     <ClInclude Include="..\Common\include\Engine.h" />
     <ClInclude Include="..\Common\include\FileReader.h" />
     <ClInclude Include="..\Common\include\OpenGL.h" />
@@ -23,6 +24,7 @@
     <ClInclude Include="..\Common\include\Sciotomath\Vector4.h" />
     <ClInclude Include="..\Common\include\Shader.h" />
     <ClInclude Include="..\Common\include\Sprite.h" />
+    <ClInclude Include="..\Common\include\SpriteBatch.h" />
     <ClInclude Include="..\Common\include\Texture.h" />
     <ClInclude Include="..\Common\include\Viewport.h" />
     <ClInclude Include="include\OpenGLDeclarator.h" />
@@ -34,6 +36,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Common\src\Debug.cpp" />
+    <ClCompile Include="..\Common\src\Drawable.cpp" />
     <ClCompile Include="..\Common\src\Engine.cpp" />
     <ClCompile Include="..\Common\src\FileReader.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Rectangle.cpp" />
@@ -42,6 +45,7 @@
     <ClCompile Include="..\Common\src\Sciotomath\Vector4.cpp" />
     <ClCompile Include="..\Common\src\Shader.cpp" />
     <ClCompile Include="..\Common\src\Sprite.cpp" />
+    <ClCompile Include="..\Common\src\SpriteBatch.cpp" />
     <ClCompile Include="..\Common\src\Texture.cpp" />
     <ClCompile Include="..\Common\src\Viewport.cpp" />
     <ClCompile Include="src\OpenGLDeclarator.cpp" />

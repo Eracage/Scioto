@@ -136,8 +136,8 @@ namespace Scioto
 	
 	void Sprite::Draw(float z)
 	{
-		glEnableVertexAttribArray(m_shader->Position);    
-		glEnableVertexAttribArray(m_shader->Uv);   
+		glEnableVertexAttribArray(m_shader->Position);
+		glEnableVertexAttribArray(m_shader->Uv);
 		glUseProgram(m_shader->Program);
 
 		glDepthFunc(GL_LEQUAL);

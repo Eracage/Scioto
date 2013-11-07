@@ -87,6 +87,12 @@
     <ClInclude Include="..\Common\include\Debug.h">
       <Filter>Common\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\SpriteBatch.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Drawable.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -132,6 +138,12 @@
       <Filter>Common\src</Filter>
     </ClCompile>
     <ClCompile Include="..\Common\src\Sprite.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\SpriteBatch.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Drawable.cpp">
       <Filter>Common\src</Filter>
     </ClCompile>
   </ItemGroup>
