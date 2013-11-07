@@ -13,6 +13,7 @@ namespace Scioto
 		setTexture(texture);
 	}
 	Sprite::~Sprite(){}
+
 	void Sprite::setTexture(Texture2D* texture)
 	{
 		m_texture = texture;
@@ -61,8 +62,6 @@ namespace Scioto
 		m_shader = shader;
 	}
 
-
-	
 	void Sprite::init()
 	{
 		m_translation = (float*)calloc(16,sizeof(float));

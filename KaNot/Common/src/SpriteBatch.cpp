@@ -14,17 +14,38 @@ namespace Scioto
 	{}
 
 	
-	void Draw(Sprite* sprite, Vector2 position,Vector2 scale,
-		float rotation,int shader);
-	void Draw(Vector2* vector2, Vector2 position,Vector2 scale,
-		float rotation,int shader);
-	void Draw(Vector3* vector3, Vector2 position,Vector2 scale,
-		float rotation,int shader);
-	void Draw(Rectangle* rectangle, Vector2 position,Vector2 scale,
-		float rotation,int shader);
+	void SpriteBatch::Draw(Sprite* sprite, float depth, Vector2 position,
+		Vector2 scale,float rotation,int shader)
+	{
+		m_drawables.push_back(new Drawable(sprite,position,scale,rotation,shader,depth));
+	}
+	void SpriteBatch::Draw(Vector2* vector2, float depth, Vector2 position,
+		Vector2 scale,float rotation,int shader)
+	{
+		m_drawables.push_back(new Drawable(vector2,position,scale,rotation,shader,depth));
+	}
+	void SpriteBatch::Draw(Vector3* vector3, float depth, Vector2 position,
+		Vector2 scale,float rotation,int shader)
+	{
+		m_drawables.push_back(new Drawable(vector3,position,scale,rotation,shader,depth));
+	}
+	void SpriteBatch::Draw(Rectangle* rectangle, float depth, Vector2 position,
+		Vector2 scale,float rotation,int shader)
+	{
+		m_drawables.push_back(new Drawable(rectangle,position,scale,rotation,shader,depth));
+	}
 
-	void Render();
+	void SpriteBatch::Render()
+	{
 
-	int addShader(Shader* shader);
+	}
+
+	int SpriteBatch::addShader(Shader* shader)
+	{
+		m_shaders.push_back(shader);
+		return m_shaders.size();
+	}
+	
+	void SpriteBatch::genBuffers(){}
 
 }

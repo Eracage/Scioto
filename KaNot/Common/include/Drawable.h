@@ -33,13 +33,13 @@ namespace Scioto
 
 	public:
 		Drawable(Sprite* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader);
+			float rotation,int shader, float depth);
 		Drawable(Vector2* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader);
+			float rotation,int shader, float depth);
 		Drawable(Vector3* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader);
+			float rotation,int shader, float depth);
 		Drawable(Rectangle* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader);
+			float rotation,int shader, float depth);
 		~Drawable();
 
 		Vector2 m_position;
