@@ -14,6 +14,8 @@ namespace Scioto
 	public:
 		SpriteBatch(Shader* shader0,Viewport* viewport);
 		~SpriteBatch();
+
+		void Init();
 		
 		void Draw(Sprite* sprite, float depth = 0.0f, Vector2 position = Vector2(),
 			Vector2 scale = Vector2(1,1),float rotation = 0.0f,int shader = 1);
@@ -28,9 +30,18 @@ namespace Scioto
 
 		int addShader(Shader* shader);
 		
-		void genBuffers();
 		
 	private:
+
+		void setScale(Vector2 scale);
+		void setTranslation(Vector3 position);
+		void setRotation(float rotation);
+
+		void genBuffers();
+
+		void Sort();
+
+		void AddDraw(Drawable* drawable);
 
 		std::vector<Shader*> m_shaders;
 		Viewport* m_viewport;
@@ -43,6 +54,10 @@ namespace Scioto
 		float* m_scale;
 		float* m_translation;
 		float* m_rotation;
+
+		Vector2 m_last_scale;
+		Vector3 m_last_position;
+		float m_last_rotation;
 	};
 
 }

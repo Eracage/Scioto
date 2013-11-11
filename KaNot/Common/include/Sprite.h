@@ -47,6 +47,8 @@ namespace Scioto
 		Texture2D* m_texture;
 
 		GLuint VBO;
+		
+		friend class SpriteBatch;
 	};
 }
 
