@@ -18,35 +18,21 @@ namespace Scioto
 		~Sprite();
 		void setTexture(Texture2D* texture);
 
+		void setDepth(float depth);
 		void setPosition(Vector2 Position);
 		void setSize(Vector2 Size);
 		void setRotation(float Radians);
 
-		void setViewport(Viewport* viewport);
-		void setShader(Shader* shader);
+		Vector2 getPosition();
 
-		void Draw(float z);
-
-		Vector2 m_position, m_size;
+		Vector3 m_position;
+		Vector2 m_size;
 		float m_radians;
 
 	private:
-		void init();
-		void genBuffer();
 		Sprite(Sprite& sprite);
-		
-		float* m_scale;
-		float* m_translation;
-		float* m_rotation;
-
-		float* Data;
-
-		Viewport* m_viewport;
-		Shader* m_shader;
 
 		Texture2D* m_texture;
-
-		GLuint VBO;
 		
 		friend class SpriteBatch;
 	};

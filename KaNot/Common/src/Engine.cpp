@@ -32,24 +32,21 @@ namespace Scioto
 
 		shader = new Shader(gVertexShader,gFragmentShader);
 		viewport = new Viewport(800,800,ContextWidht, ContextHeight);
+		m_spritebatch = new SpriteBatch(shader,viewport);
 	
 		m_backTexture = new Texture2D("Background.tga");
 		m_background = new Sprite(m_backTexture);
-		m_background->setShader(shader);
-		m_background->setViewport(viewport);
 		m_background->setSize(Vector2(ContextWidht*4,ContextHeight*4));
 		m_background->setPosition(Vector2(ContextWidht,ContextHeight));
 
 		m_texture = new Texture2D("SciotoLogo.tga");
 		m_texture2 = new Texture2D("Test.tga");
-		for (int i=0; i<1000;i++)
+		for (int i=0; i<10000;i++)
 		{
 			if (i%2)
 				m_sprites[i] = new Sprite(m_texture);
 			else
 				m_sprites[i] = new Sprite(m_texture2);
-			m_sprites[i]->setShader(shader);
-			m_sprites[i]->setViewport(viewport);
 			m_sprites[i]->setPosition(Vector2((rand()%1600),(rand()%1600)));
 		}
 	}
@@ -59,12 +56,14 @@ namespace Scioto
 
 	void Engine::Update()
 	{
-		for (int i=0; i<1000; i++)
+		m_spritebatch->Draw(m_background);
+		for (int i=0; i<10000; i++)
 		{
-			m_sprites[i]->setPosition(m_sprites[i]->m_position+Vector2(
-				(rand()%2001-1000)/(i+1),
-				(rand()%2001-1000)/(i+1)
+			m_sprites[i]->setPosition(m_sprites[i]->getPosition()+Vector2(
+				(rand()%20001-10000)/(i+1),
+				(rand()%20001-10000)/(i+1)
 				));
+			m_spritebatch->Draw(m_sprites[i]);
 		}
 	}
 
@@ -82,8 +81,6 @@ namespace Scioto
 
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-		m_background->Draw(1);
-		for (int i=0; i<1000;i++)
-			m_sprites[i]->Draw(0);
+		m_spritebatch->Render();
 	}
 }

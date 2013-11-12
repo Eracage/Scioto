@@ -7,6 +7,9 @@ namespace Scioto
 		: m_viewport (viewport)
 	{
 		m_shaders.push_back(shader0);
+		m_shaders.push_back(shader0);
+		m_shaders.push_back(shader0);
+		m_shaders.push_back(shader0);
 		Init();
 	}
 
@@ -15,6 +18,7 @@ namespace Scioto
 
 	void SpriteBatch::Init()
 	{
+		genBuffers();
 		m_translation = (float*)calloc(16,sizeof(float));
 		m_rotation = (float*)calloc(16,sizeof(float));
 		m_scale = (float*)calloc(16,sizeof(float));
@@ -51,7 +55,9 @@ namespace Scioto
 		for(int i=0;i<m_drawables.size();i++)
 		{
 			AddDraw(m_drawables[i]);
+			delete m_drawables[i];
 		}
+		m_drawables.clear();
 	}
 
 	int SpriteBatch::addShader(Shader* shader)
@@ -108,6 +114,8 @@ namespace Scioto
 	
 	void SpriteBatch::genBuffers()
 	{
+		for(int i=0;i<5;i++)
+			VBOs.push_back(0);
 #pragma region Sprite
 		{
 			glGenBuffers(1,&VBOs[Drawable::DrawableType::DrawSprite]);
@@ -237,6 +245,10 @@ namespace Scioto
 		{
 		case Drawable::DrawableType::DrawSprite:
 			//how to draw sprite
+			setTranslation(drawable->m_object.m_sprite->m_position);
+			setScale(drawable->m_object.m_sprite->m_size);
+			setRotation(drawable->m_object.m_sprite->m_radians);
+
 			glEnableVertexAttribArray(m_shaders[1]->Position);
 			glEnableVertexAttribArray(m_shaders[1]->Uv);
 			glUseProgram(m_shaders[1]->Program);

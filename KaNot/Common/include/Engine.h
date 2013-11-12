@@ -7,6 +7,7 @@
 #include <Viewport.h>
 #include <FileReader.h>
 #include <Sprite.h>
+#include <SpriteBatch.h>
 
 namespace Scioto
 {
@@ -18,14 +19,15 @@ namespace Scioto
 			void Update();
 			void Draw();
 
-			Scioto::Shader* shader;
-			Scioto::Viewport* viewport;
+			Shader* shader;
+			Viewport* viewport;
+			SpriteBatch* m_spritebatch;
 			
 			Texture2D* m_backTexture;
 			Sprite* m_background;
 			Texture2D* m_texture;
 			Texture2D* m_texture2;
-			Sprite* m_sprites[1000];
+			Sprite* m_sprites[10000];
 
 			//////////////////////////////////////////////////////// TEMP
 		
