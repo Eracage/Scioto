@@ -28,10 +28,9 @@ namespace Scioto
 		setTranslation(Vector3());
 	}
 
-	void SpriteBatch::Draw(Sprite* sprite, float depth, Vector2 position,
-		Vector2 scale,float rotation,int shader)
+	void SpriteBatch::Draw(Drawable* drawable)
 	{
-		m_drawables.push_back(new Drawable(sprite,position,scale,rotation,shader,depth));
+		m_drawables.push_back(drawable);
 	}
 	void SpriteBatch::Draw(Vector2* vector2, float depth, Vector2 position,
 		Vector2 scale,float rotation,int shader)
@@ -81,6 +80,10 @@ namespace Scioto
 		m_last_scale = scale;
 	}
 
+	void SpriteBatch::setTranslation(Vector2 position, float depth)
+	{
+		setTranslation(Vector3(position.x,position.y,depth));
+	}
 	void SpriteBatch::setTranslation(Vector3 position)
 	{
 		if (position == m_last_position)
@@ -118,7 +121,7 @@ namespace Scioto
 			VBOs.push_back(0);
 #pragma region Sprite
 		{
-			glGenBuffers(1,&VBOs[Drawable::DrawableType::DrawSprite]);
+			glGenBuffers(1,&VBOs[Drawable::DrawableType::External]);
 		
 			float* Data = (float*)malloc(30*sizeof(float));
 
@@ -169,7 +172,7 @@ namespace Scioto
 			Data[28] = 1; 
 			Data[29] = 0; 
 	
-			glBindBuffer(GL_ARRAY_BUFFER,VBOs[Drawable::DrawableType::DrawSprite]); 
+			glBindBuffer(GL_ARRAY_BUFFER,VBOs[Drawable::DrawableType::External]); 
   
 			glBufferData(GL_ARRAY_BUFFER,sizeof(Data)*30,Data,GL_DYNAMIC_DRAW); 
 			free(Data);
@@ -243,37 +246,13 @@ namespace Scioto
 	{
 		switch (drawable->m_type)
 		{
-		case Drawable::DrawableType::DrawSprite:
+		case Drawable::DrawableType::External:
 			//how to draw sprite
-			setTranslation(drawable->m_object.m_sprite->m_position);
-			setScale(drawable->m_object.m_sprite->m_size);
-			setRotation(drawable->m_object.m_sprite->m_radians);
+			setTranslation(drawable->m_position,drawable->m_depth);
+			setScale(drawable->m_scale);
+			setRotation(drawable->m_rotation);
 
-			glEnableVertexAttribArray(m_shaders[1]->Position);
-			glEnableVertexAttribArray(m_shaders[1]->Uv);
-			glUseProgram(m_shaders[1]->Program);
-
-			glDepthFunc(GL_LEQUAL);
-			glEnable(GL_DEPTH_TEST);
-
-			glEnable (GL_BLEND);
-			glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, drawable->m_object.m_sprite->m_texture->GetGLTextureID());
-
-			glUniform1i(m_shaders[1]->loc, 0); 
-
-			glVertexAttribPointer(m_shaders[1]->Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
-			glVertexAttribPointer(m_shaders[1]->Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
-			glUniformMatrix4fv(m_shaders[1]->loc2,1,GL_FALSE,m_viewport->m_projection);
-			glUniformMatrix4fv(m_shaders[1]->loc3,1,GL_FALSE,m_translation);
-			glUniformMatrix4fv(m_shaders[1]->loc4,1,GL_FALSE,m_rotation);
-			glUniformMatrix4fv(m_shaders[1]->loc5,1,GL_FALSE,m_scale);
-			glBindBuffer(GL_ARRAY_BUFFER,VBOs[Drawable::DrawableType::DrawSprite]); 
-			glDrawArrays(GL_TRIANGLES,0,6); 
-			glDisableVertexAttribArray(m_shaders[1]->Position);    
-			glDisableVertexAttribArray(m_shaders[1]->Uv);   
+			drawable->Draw(m_shaders[Drawable::DrawableType::External],m_viewport->m_projection,m_translation,m_rotation, m_scale,VBOs[Drawable::DrawableType::External]);
 
 			break;
 		case Drawable::DrawableType::DrawVector2:

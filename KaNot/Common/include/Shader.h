@@ -2,8 +2,8 @@
 #ifndef SHADER_H
 #define SHADER_H
 
-#include <OpenGL.h>
-#include <Debug.h>
+#include "OpenGL.h"
+#include "Debug.h"
 
 namespace Scioto
 {

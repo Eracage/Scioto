@@ -17,8 +17,7 @@ namespace Scioto
 
 		void Init();
 		
-		void Draw(Sprite* sprite, float depth = 0.0f, Vector2 position = Vector2(),
-			Vector2 scale = Vector2(1,1),float rotation = 0.0f,int shader = 1);
+		void Draw(Drawable* drawable);
 		void Draw(Vector2* vector2, float depth = 0.0f, Vector2 position = Vector2(),
 			Vector2 scale = Vector2(1,1),float rotation = 0.0f,int shader = 0);
 		void Draw(Vector3* vector3, float depth = 0.0f, Vector2 position = Vector2(),
@@ -34,6 +33,7 @@ namespace Scioto
 	private:
 
 		void setScale(Vector2 scale);
+		void setTranslation(Vector2 position, float depth);
 		void setTranslation(Vector3 position);
 		void setRotation(float rotation);
 

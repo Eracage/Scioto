@@ -1,10 +1,10 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
-#include <OpenGL.h>
+#include "OpenGL.h"
 
 #ifdef _WIN32
-#include <Windows.h>
+#include "Windows.h"
 #include <iostream>
 #define  LOGI(...)  PrintToOutput(false,__VA_ARGS__)
 //Use tostring()

@@ -3,7 +3,7 @@
 #define FILE_READER
 
 #include <stdio.h>
-#include <OpenGL.h>
+#include "OpenGL.h"
 
 #include <fstream>
 #include <sstream>

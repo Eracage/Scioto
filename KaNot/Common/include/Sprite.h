@@ -2,15 +2,16 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include <Viewport.h>
-#include <Shader.h>
-#include <Texture.h>
-#include <Sciotomath\Vector.h>
-#include <Sciotomath\Rectangle.h>
+#include "Viewport.h"
+#include "Shader.h"
+#include "Texture.h"
+#include "Drawable.h"
+#include "Sciotomath\Vector.h"
+#include "Sciotomath\Rectangle.h"
 
 namespace Scioto
 {
-	class Sprite
+	class Sprite : public Drawable
 	{
 	public:
 		Sprite();
@@ -25,12 +26,11 @@ namespace Scioto
 
 		Vector2 getPosition();
 
-		Vector3 m_position;
 		Vector2 m_size;
-		float m_radians;
 
 	private:
 		Sprite(Sprite& sprite);
+		void Draw(Shader* shader, float* projection, float* translation, float* rotation, float* scale, GLuint VBO);
 
 		Texture2D* m_texture;
 		

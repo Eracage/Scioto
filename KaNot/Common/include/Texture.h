@@ -2,7 +2,7 @@
 #ifndef TEXTURE_H
 #define	TEXTURE_H
 
-#include <Debug.h>
+#include "Debug.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>

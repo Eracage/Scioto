@@ -1,6 +1,6 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
-#include <Sciotomath/Vector2.h>
+#include "Sciotomath/Vector2.h"
 
 namespace Scioto
 {

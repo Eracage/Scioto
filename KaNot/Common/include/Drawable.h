@@ -1,8 +1,14 @@
 #pragma once
 #ifndef DRAWABLE_H
 #define	DRAWABLE_H
-#include "Sprite.h"
+
+namespace Scioto
+{
+	class Drawable;
+}
+
 #include "Sciotomath\Math.h"
+#include "Shader.h"
 
 namespace Scioto
 {
@@ -11,7 +17,7 @@ namespace Scioto
 	{
 		enum DrawableType
 		{
-			DrawSprite = 0,
+			External = 0,
 			DrawVector2,
 			DrawVector3,
 			DrawRectangle,
@@ -25,22 +31,22 @@ namespace Scioto
 				: m_pointer(pointer)
 			{}
 			void* m_pointer;
-			Sprite* m_sprite;
 			Vector2* m_vector2;
 			Vector3* m_vector3;
 			Rectangle* m_rectangle;
 		};
 
 	public:
-		Drawable(Sprite* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader, float depth);
-		Drawable(Vector2* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader, float depth);
-		Drawable(Vector3* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader, float depth);
-		Drawable(Rectangle* sprite, Vector2 position,Vector2 scale,
-			float rotation,int shader, float depth);
+		Drawable();
+		Drawable(Vector2* sprite, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
+			float rotation = 0.0f,int shader = 0, float depth = 0.0f);
+		Drawable(Vector3* sprite, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
+			float rotation = 0.0f,int shader = 0, float depth = 0.0f);
+		Drawable(Rectangle* sprite, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
+			float rotation = 0.0f,int shader = 0, float depth = 0.0f);
 		~Drawable();
+
+		virtual void Draw(Shader* shader, float* projection, float* translation, float* rotation, float* scale, GLuint VBO);
 
 		Vector2 m_position;
 		Vector2 m_scale;
