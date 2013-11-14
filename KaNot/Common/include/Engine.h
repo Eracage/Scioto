@@ -27,7 +27,10 @@ namespace Scioto
 			Sprite* m_background;
 			Texture2D* m_texture;
 			Texture2D* m_texture2;
+			Texture2D* m_texture3;
 			Sprite* m_sprites[10000];
+			Sprite* m_trex;
+			float m_trotation;
 
 			//////////////////////////////////////////////////////// TEMP
 		

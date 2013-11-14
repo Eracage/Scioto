@@ -49,6 +49,12 @@ namespace Scioto
 				m_sprites[i] = new Sprite(m_texture2);
 			m_sprites[i]->setPosition(Vector2((rand()%1600),(rand()%1600)));
 		}
+
+		m_trotation = 0;
+		m_texture3 = new Texture2D("trex.tga");
+		m_trex = new Sprite(m_texture3);
+		m_trex->setPosition(Vector2(1800,1800));
+
 	}
 	Engine::~Engine()
 	{
@@ -56,15 +62,25 @@ namespace Scioto
 
 	void Engine::Update()
 	{
+		m_trotation += 0.1;
 		m_spritebatch->Draw(m_background);
 		for (int i=0; i<10000; i++)
 		{
 			m_sprites[i]->setPosition(m_sprites[i]->getPosition()+Vector2(
-				(rand()%20001-10000)/(i+1),
-				(rand()%20001-10000)/(i+1)
+				(rand()%80001-40000)/(i+1),
+				(rand()%80001-40000)/(i+1)
 				));
 			m_spritebatch->Draw(m_sprites[i]);
 		}
+		m_trex->setPosition(m_trex->getPosition() + Vector2(-2,-2));
+		if (m_trotation < 0.5)
+			m_trex->setRotation(m_trotation);
+		else if (m_trotation < 1.5)
+			m_trex->setRotation(1-m_trotation);
+		else
+			m_trotation = -0.5;
+		m_spritebatch->Draw(m_trex);
+		LOGI("%f",m_trotation);
 	}
 
 	void Engine::Draw()
