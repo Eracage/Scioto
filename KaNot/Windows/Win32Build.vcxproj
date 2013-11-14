@@ -34,6 +34,7 @@
   <ItemGroup>
     <ClCompile Include="..\Android\src\gl_code.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Common\src\Debug.cpp" />
     <ClCompile Include="..\Common\src\Drawable.cpp" />
