@@ -54,7 +54,8 @@ namespace Scioto
 		for(int i=0;i<m_drawables.size();i++)
 		{
 			AddDraw(m_drawables[i]);
-			delete m_drawables[i];
+			if (m_drawables[i]->m_type != Drawable::DrawableType::External)
+				delete m_drawables[i];
 		}
 		m_drawables.clear();
 	}
@@ -248,11 +249,37 @@ namespace Scioto
 		{
 		case Drawable::DrawableType::External:
 			//how to draw sprite
+
 			setTranslation(drawable->m_position,drawable->m_depth);
 			setScale(drawable->m_scale);
 			setRotation(drawable->m_rotation);
 
-			drawable->Draw(m_shaders[Drawable::DrawableType::External],m_viewport->m_projection,m_translation,m_rotation, m_scale,VBOs[Drawable::DrawableType::External]);
+			drawable->Draw(m_shaders[drawable->m_shader],m_viewport->m_projection,m_translation,m_rotation, m_scale,VBOs[Drawable::DrawableType::External]);
+			
+			//glEnableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Position);
+			//glEnableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Uv);
+			//glUseProgram(m_shaders[Drawable::DrawableType::External]->Program);
+
+			//glDepthFunc(GL_LEQUAL);
+			//glEnable(GL_DEPTH_TEST);
+
+			//glEnable (GL_BLEND);
+			//glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+			//glUniform1i(m_shaders[Drawable::DrawableType::External]->loc, 0); 
+
+			//glVertexAttribPointer(m_shaders[Drawable::DrawableType::External]->Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
+			//glVertexAttribPointer(m_shaders[Drawable::DrawableType::External]->Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
+			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc2,1,GL_FALSE,m_viewport->m_projection);
+			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc3,1,GL_FALSE,m_translation);
+			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc4,1,GL_FALSE,m_rotation);
+			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc5,1,GL_FALSE,m_scale);
+			//glBindBuffer(GL_ARRAY_BUFFER,VBOs[Drawable::DrawableType::External]);
+			//glDrawArrays(GL_TRIANGLES,0,6);
+			//glDisableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Position);
+			//glDisableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Uv);
+
 
 			break;
 		case Drawable::DrawableType::DrawVector2:

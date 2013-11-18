@@ -44,6 +44,9 @@ namespace Scioto
 
 	void Sprite::Draw(Shader* shader, float* projection, float* translation, float* rotation, float* scale, GLuint VBO)
 	{
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
+			
 		glEnableVertexAttribArray(shader->Position);
 		glEnableVertexAttribArray(shader->Uv);
 		glUseProgram(shader->Program);
@@ -54,8 +57,6 @@ namespace Scioto
 		glEnable (GL_BLEND);
 		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
 
 		glUniform1i(shader->loc, 0); 
 

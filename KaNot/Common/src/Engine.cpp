@@ -80,7 +80,6 @@ namespace Scioto
 		else
 			m_trotation = -0.5;
 		m_spritebatch->Draw(m_trex);
-		LOGI("%f",m_trotation);
 	}
 
 	void Engine::Draw()
