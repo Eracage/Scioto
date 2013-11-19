@@ -5,8 +5,6 @@ using namespace Scioto;
 
 Shader::Shader(const char VertexShaderCode[], const char FragmentShaderCode[])
 {
-	
-	
     //compile shader codes
     VS = loadShader(GL_VERTEX_SHADER,VertexShaderCode);
     PS = loadShader(GL_FRAGMENT_SHADER,FragmentShaderCode);
@@ -18,20 +16,8 @@ Shader::Shader(const char VertexShaderCode[], const char FragmentShaderCode[])
     glAttachShader(Program,VS);
     glAttachShader(Program,PS);
 
-    //bind position string to attrib at loc 0
-    glBindAttribLocation(Program,0,"position");
-	glBindAttribLocation(Program,1,"Uv"); 
-
     //finalize shader
     glLinkProgram(Program);
-
-	Position = glGetAttribLocation(Program,"vPosition");
-	Uv = glGetAttribLocation(Program,"vUv");
-	loc = glGetUniformLocation(Program, "s_texture");
-	loc2 = glGetUniformLocation(Program, "Projection");
-	loc3 = glGetUniformLocation(Program, "Translation");
-	loc4 = glGetUniformLocation(Program, "Rotation");
-	loc5 = glGetUniformLocation(Program, "Scale");
 }
 
 Shader::~Shader()

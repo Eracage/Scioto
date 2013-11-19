@@ -254,6 +254,12 @@ namespace Scioto
 			setScale(drawable->m_scale);
 			setRotation(drawable->m_rotation);
 
+			glDepthFunc(GL_LEQUAL);
+			glEnable(GL_DEPTH_TEST);
+
+			glEnable (GL_BLEND);
+			glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 			drawable->Draw(m_shaders[drawable->m_shader],m_viewport->m_projection,m_translation,m_rotation, m_scale,VBOs[Drawable::DrawableType::External]);
 			
 			//glEnableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Position);

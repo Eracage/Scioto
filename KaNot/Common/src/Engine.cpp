@@ -42,12 +42,12 @@ namespace Scioto
 
 		m_texture = new Texture2D("SciotoLogo.tga");
 		m_texture2 = new Texture2D("Test.tga");
-		for (int i=0; i<10000;i++)
+		for (int i=0; i<2000;i++)
 		{
 			if (i%2)
-				m_sprites[i] = new Sprite(m_texture);
+				m_sprites.push_back(new Sprite(m_texture));
 			else
-				m_sprites[i] = new Sprite(m_texture2);
+				m_sprites.push_back(new Sprite(m_texture2));
 			m_sprites[i]->setPosition(Vector2((rand()%1600),(rand()%1600)));
 		}
 
@@ -63,11 +63,12 @@ namespace Scioto
 
 	void Engine::Update()
 	{
-		double deltaTime = m_timer->GetCurTime();
+		double deltaTime = m_timer->GetDeltaTime();
+		LOGI("%.5f	%.5f",deltaTime, m_timer->GetCurTime());
 
 		m_trotation += 0.1;
 		m_spritebatch->Draw(m_background);
-		for (int i=0; i<10000; i++)
+		for (int i=0; i<m_sprites.size(); i++)
 		{
 			m_sprites[i]->setPosition(m_sprites[i]->getPosition()+Vector2(
 				(rand()%80001-40000)/(i+1),

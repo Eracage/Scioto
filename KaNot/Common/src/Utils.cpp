@@ -34,17 +34,23 @@ void Timer::Reset()
 #endif
 }
 
-const long double Timer::Update()
+const long double Timer::GetDeltaTime() // Does Update, calculates difference between this and last GetDeltaTime
+{
+	long double oldTime = m_memTime;
+	return Update() - oldTime;
+}
+
+const long double Timer::Update() // Updates memTime to be current time
 {
 	return m_memTime = GetCurTime();
 }
 
-const long double Timer::GetMemTime() const
+const long double Timer::GetMemTime() const // returns time from last Update or GetDeltaTime
 {
 	return m_memTime;
 }
 
-const long double Timer::GetCurTime()
+const long double Timer::GetCurTime() // returns time elapsed since timer last restarted
 {
 #ifdef _WIN32
     QueryPerformanceCounter(&m_curCount);

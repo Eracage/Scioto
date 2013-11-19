@@ -47,28 +47,40 @@ namespace Scioto
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
 			
-		glEnableVertexAttribArray(shader->Position);
-		glEnableVertexAttribArray(shader->Uv);
 		glUseProgram(shader->Program);
+		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
+		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vUv"));
 
-		glDepthFunc(GL_LEQUAL);
-		glEnable(GL_DEPTH_TEST);
+		glUniform1i(
+			glGetUniformLocation(shader->Program,"s_texture"), 
+			0);
 
-		glEnable (GL_BLEND);
-		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glGetUniformLocation(shader->Program,"s_texture");
 
+		glVertexAttribPointer(
+			glGetAttribLocation(shader->Program,"vPosition"),
+			3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0);
+		glVertexAttribPointer(
+			glGetAttribLocation(shader->Program,"vUv"),
+			2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3));
 
-		glUniform1i(shader->loc, 0); 
+		glUniformMatrix4fv(
+			glGetUniformLocation(shader->Program, "Projection"),
+			1,GL_FALSE,projection);
+		glUniformMatrix4fv(
+			glGetUniformLocation(shader->Program, "Translation"),
+			1,GL_FALSE,translation);
+		glUniformMatrix4fv(
+			glGetUniformLocation(shader->Program, "Rotation"),
+			1,GL_FALSE,rotation);
+		glUniformMatrix4fv(
+			glGetUniformLocation(shader->Program, "Scale"),
+			1,GL_FALSE,scale);
 
-		glVertexAttribPointer(shader->Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
-		glVertexAttribPointer(shader->Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
-		glUniformMatrix4fv(shader->loc2,1,GL_FALSE,projection);
-		glUniformMatrix4fv(shader->loc3,1,GL_FALSE,translation);
-		glUniformMatrix4fv(shader->loc4,1,GL_FALSE,rotation);
-		glUniformMatrix4fv(shader->loc5,1,GL_FALSE,scale);
 		glBindBuffer(GL_ARRAY_BUFFER,VBO);
 		glDrawArrays(GL_TRIANGLES,0,6);
-		glDisableVertexAttribArray(shader->Position);
-		glDisableVertexAttribArray(shader->Uv);
+
+		glDisableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
+		glDisableVertexAttribArray(glGetAttribLocation(shader->Program,"vUv"));
 	}
 }

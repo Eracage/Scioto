@@ -17,6 +17,7 @@ namespace Scioto
 	public:
 		Timer(); //initializes Timer class
 		void Reset();
+		const long double GetDeltaTime();
 		const long double Update(); // updates current time
 		const long double GetMemTime() const; // returns time of last Update() event
 		const long double GetCurTime(); // returns time elapsed since program start
