@@ -8,6 +8,7 @@
 #include "FileReader.h"
 #include "Sprite.h"
 #include "SpriteBatch.h"
+#include "Utils.h"
 
 namespace Scioto
 {
@@ -22,6 +23,8 @@ namespace Scioto
 			Shader* shader;
 			Viewport* viewport;
 			SpriteBatch* m_spritebatch;
+			Timer* m_timer;
+			float m_baseTime;
 			
 			Texture2D* m_backTexture;
 			Sprite* m_background;

@@ -93,6 +93,9 @@
     <ClInclude Include="..\Common\include\Drawable.h">
       <Filter>Common\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\Utils.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -144,6 +147,9 @@
       <Filter>Common\src</Filter>
     </ClCompile>
     <ClCompile Include="..\Common\src\Drawable.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Utils.cpp">
       <Filter>Common\src</Filter>
     </ClCompile>
   </ItemGroup>

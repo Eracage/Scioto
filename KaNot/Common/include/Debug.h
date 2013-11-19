@@ -10,7 +10,9 @@
 //Use tostring()
 #define  LOGE(...)  PrintToOutput(true,__VA_ARGS__)
 void PrintToOutput(bool error, const char* format, ...);
-#else
+#endif
+
+#ifdef __ANDROID__
 #include <android/log.h>
 #define  LOG_TAG    "libKaNot"
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)

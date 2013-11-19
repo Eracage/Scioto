@@ -33,6 +33,7 @@ namespace Scioto
 		shader = new Shader(gVertexShader,gFragmentShader);
 		viewport = new Viewport(800,800,ContextWidht, ContextHeight);
 		m_spritebatch = new SpriteBatch(shader,viewport);
+		m_timer = new Timer();
 	
 		m_backTexture = new Texture2D("Background.tga");
 		m_background = new Sprite(m_backTexture);
@@ -62,6 +63,8 @@ namespace Scioto
 
 	void Engine::Update()
 	{
+		double deltaTime = m_timer->GetCurTime();
+
 		m_trotation += 0.1;
 		m_spritebatch->Draw(m_background);
 		for (int i=0; i<10000; i++)

@@ -32,7 +32,7 @@ namespace Scioto
 	{
 	public:
 
-#if __ANDROID__
+#ifdef __ANDROID__
 static AAssetManager* A_Manager;
 #endif
 
