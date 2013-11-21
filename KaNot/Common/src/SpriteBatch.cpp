@@ -6,6 +6,8 @@ namespace Scioto
 	SpriteBatch::SpriteBatch(Viewport* viewport)
 		: m_viewport (viewport)
 	{
+		
+		// Making default shader
 		const char gVertexShader[] = 
 		"attribute vec3 vPosition;\n"
 		"attribute vec2 vUv;\n"
@@ -32,7 +34,37 @@ namespace Scioto
 		"}\n";
 		
 		m_shaders.push_back(new Shader(gVertexShader,gFragmentShader));
+
+
+		// Making default sprite shader
+		const char gVertexShader[] = 
+		"attribute vec3 vPosition;\n"
+		"attribute vec2 vUv;\n"
+		"uniform mat4 Projection;\n"
+		"uniform mat4 Translation;\n"
+		"uniform mat4 Scale;\n"
+		"uniform mat4 Rotation;\n"
+		"varying vec2 Uv;\n"
+		"void main() {\n"
+		"  gl_Position = vec4(vPosition,1.0);\n"
+		"  gl_Position *= Scale;\n"	
+		"  gl_Position *= Rotation;\n"	
+		"  gl_Position *= Translation;\n"	
+		"  gl_Position *= Projection;\n"	
+		"  Uv = vUv;\n"
+		"}\n";
+
+		const char gFragmentShader[] = 
+		"precision mediump float;\n"
+		"varying vec2 Uv;\n"
+		"uniform sampler2D s_texture;\n"
+		"void main() {\n"
+		"  gl_FragColor = texture2D(s_texture,Uv);\n"
+		"}\n";
+		
 		m_shaders.push_back(new Shader(gVertexShader,gFragmentShader));
+
+
 		Init();
 	}
 
