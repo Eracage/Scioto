@@ -35,25 +35,6 @@ namespace Scioto
 			std::vector<Sprite*> m_sprites;
 			Sprite* m_trex;
 			float m_trotation;
-
-			//////////////////////////////////////////////////////// TEMP
-		
-			//Scioto::tgaHeader header;
-			//GLuint Texture;
-
-			//GLfloat* GlProjection;
-			//GLfloat* GlTranslation;
-
-			//float position;
-			//float sine;
-
-
-			////amount of vertices for the object
-			//unsigned int num_vertices;
-
-			//GLfloat* Data;
-			//
-			//GLuint VBO, VBO2;
 	};
 }
 #endif

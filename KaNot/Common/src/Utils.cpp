@@ -5,8 +5,7 @@ namespace Scioto
 	
 Timer::Timer()
 {
-    m_startTime = 0;
-    m_curTime = 0;
+    m_startTime = m_curTime = m_memTime = 0;
 
 	// Initialize
 

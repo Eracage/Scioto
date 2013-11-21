@@ -12,7 +12,7 @@ namespace Scioto
 	class SpriteBatch
 	{
 	public:
-		SpriteBatch(Shader* shader0,Viewport* viewport);
+		SpriteBatch(Viewport* viewport);
 		~SpriteBatch();
 
 		void Init();
@@ -45,8 +45,9 @@ namespace Scioto
 
 		std::vector<Shader*> m_shaders;
 		Viewport* m_viewport;
-
+		
 		std::vector<Drawable*> m_drawables;
+		std::vector<Drawable*> m_onceDrawables;
 
 		std::vector<float*> m_datas;
 		std::vector<GLuint> VBOs;

@@ -3,13 +3,36 @@
 namespace Scioto
 {
 	
-	SpriteBatch::SpriteBatch(Shader* shader0,Viewport* viewport)
+	SpriteBatch::SpriteBatch(Viewport* viewport)
 		: m_viewport (viewport)
 	{
-		m_shaders.push_back(shader0);
-		m_shaders.push_back(shader0);
-		m_shaders.push_back(shader0);
-		m_shaders.push_back(shader0);
+		const char gVertexShader[] = 
+		"attribute vec3 vPosition;\n"
+		"attribute vec2 vUv;\n"
+		"uniform mat4 Projection;\n"
+		"uniform mat4 Translation;\n"
+		"uniform mat4 Scale;\n"
+		"uniform mat4 Rotation;\n"
+		"varying vec2 Uv;\n"
+		"void main() {\n"
+		"  gl_Position = vec4(vPosition,1.0);\n"
+		"  gl_Position *= Scale;\n"	
+		"  gl_Position *= Rotation;\n"	
+		"  gl_Position *= Translation;\n"	
+		"  gl_Position *= Projection;\n"	
+		"  Uv = vUv;\n"
+		"}\n";
+
+		const char gFragmentShader[] = 
+		"precision mediump float;\n"
+		"varying vec2 Uv;\n"
+		"uniform sampler2D s_texture;\n"
+		"void main() {\n"
+		"  gl_FragColor = texture2D(s_texture,Uv);\n"
+		"}\n";
+		
+		m_shaders.push_back(new Shader(gVertexShader,gFragmentShader));
+		m_shaders.push_back(new Shader(gVertexShader,gFragmentShader));
 		Init();
 	}
 
@@ -35,17 +58,23 @@ namespace Scioto
 	void SpriteBatch::Draw(Vector2* vector2, float depth, Vector2 position,
 		Vector2 scale,float rotation,int shader)
 	{
-		m_drawables.push_back(new Drawable(vector2,position,scale,rotation,shader,depth));
+		Drawable* d = new Drawable(vector2,position,scale,rotation,shader,depth);
+		m_onceDrawables.push_back(d);
+		m_drawables.push_back(d);
 	}
 	void SpriteBatch::Draw(Vector3* vector3, float depth, Vector2 position,
 		Vector2 scale,float rotation,int shader)
 	{
-		m_drawables.push_back(new Drawable(vector3,position,scale,rotation,shader,depth));
+		Drawable* d = new Drawable(vector3,position,scale,rotation,shader,depth);
+		m_onceDrawables.push_back(d);
+		m_drawables.push_back(d);
 	}
 	void SpriteBatch::Draw(Rectangle* rectangle, float depth, Vector2 position,
 		Vector2 scale,float rotation,int shader)
 	{
-		m_drawables.push_back(new Drawable(rectangle,position,scale,rotation,shader,depth));
+		Drawable* d = new Drawable(rectangle,position,scale,rotation,shader,depth);
+		m_onceDrawables.push_back(d);
+		m_drawables.push_back(d);
 	}
 
 	void SpriteBatch::Render()
@@ -54,10 +83,13 @@ namespace Scioto
 		for(int i=0;i<m_drawables.size();i++)
 		{
 			AddDraw(m_drawables[i]);
-			if (m_drawables[i]->m_type != Drawable::DrawableType::External)
-				delete m_drawables[i];
 		}
+
+		for(int i=0;i<m_onceDrawables.size();i++)
+			delete m_onceDrawables[i];
+
 		m_drawables.clear();
+		m_onceDrawables.clear();
 	}
 
 	int SpriteBatch::addShader(Shader* shader)
@@ -262,31 +294,6 @@ namespace Scioto
 
 			drawable->Draw(m_shaders[drawable->m_shader],m_viewport->m_projection,m_translation,m_rotation, m_scale,VBOs[Drawable::DrawableType::External]);
 			
-			//glEnableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Position);
-			//glEnableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Uv);
-			//glUseProgram(m_shaders[Drawable::DrawableType::External]->Program);
-
-			//glDepthFunc(GL_LEQUAL);
-			//glEnable(GL_DEPTH_TEST);
-
-			//glEnable (GL_BLEND);
-			//glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-
-			//glUniform1i(m_shaders[Drawable::DrawableType::External]->loc, 0); 
-
-			//glVertexAttribPointer(m_shaders[Drawable::DrawableType::External]->Position,3,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),0); 
-			//glVertexAttribPointer(m_shaders[Drawable::DrawableType::External]->Uv,2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3)); 
-			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc2,1,GL_FALSE,m_viewport->m_projection);
-			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc3,1,GL_FALSE,m_translation);
-			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc4,1,GL_FALSE,m_rotation);
-			//glUniformMatrix4fv(m_shaders[Drawable::DrawableType::External]->loc5,1,GL_FALSE,m_scale);
-			//glBindBuffer(GL_ARRAY_BUFFER,VBOs[Drawable::DrawableType::External]);
-			//glDrawArrays(GL_TRIANGLES,0,6);
-			//glDisableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Position);
-			//glDisableVertexAttribArray(m_shaders[Drawable::DrawableType::External]->Uv);
-
-
 			break;
 		case Drawable::DrawableType::DrawVector2:
 			break;

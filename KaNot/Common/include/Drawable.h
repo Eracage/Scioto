@@ -38,11 +38,11 @@ namespace Scioto
 
 	public:
 		Drawable();
-		Drawable(Vector2* sprite, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
+		Drawable(Vector2* pointer, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
 			float rotation = 0.0f,int shader = 0, float depth = 0.0f);
-		Drawable(Vector3* sprite, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
+		Drawable(Vector3* pointer, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
 			float rotation = 0.0f,int shader = 0, float depth = 0.0f);
-		Drawable(Rectangle* sprite, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
+		Drawable(Rectangle* pointer, Vector2 position = Vector2(),Vector2 scale = Vector2(1,1),
 			float rotation = 0.0f,int shader = 0, float depth = 0.0f);
 		~Drawable();
 
