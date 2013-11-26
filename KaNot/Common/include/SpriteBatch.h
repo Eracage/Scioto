@@ -1,6 +1,7 @@
 #pragma once
-#ifndef SPRITEBATCH_H
-#define SPRITEBATCH_H
+#ifndef SPRITEBATCH_H_SCIOTO
+#define SPRITEBATCH_H_SCIOTO
+
 #include "Shader.h"
 #include "Viewport.h"
 #include <vector>

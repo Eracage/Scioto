@@ -1,5 +1,7 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#pragma once
+#ifndef RECTANGLE_H_SCIOTO
+#define RECTANGLE_H_SCIOTO
+
 #include "Sciotomath/Vector2.h"
 
 namespace Scioto

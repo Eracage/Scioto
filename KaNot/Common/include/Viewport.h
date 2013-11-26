@@ -1,6 +1,6 @@
 #pragma once
-#ifndef VIEWPORT_H
-#define	VIEWPORT_H
+#ifndef VIEWPORT_H_SCIOTO
+#define VIEWPORT_H_SCIOTO
 
 namespace Scioto
 {

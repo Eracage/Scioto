@@ -1,5 +1,6 @@
-#ifndef VECTOR3_H
-#define VECTOR3_H
+#pragma once
+#ifndef VECTOR3_H_SCIOTO
+#define VECTOR3_H_SCIOTO
 
 namespace Scioto
 

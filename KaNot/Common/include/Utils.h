@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UTILS_H
-#define	UTILS_H
+#ifndef UTILS_H_SCIOTO
+#define UTILS_H_SCIOTO
 
 #ifdef _WIN32
 #include <windows.h>

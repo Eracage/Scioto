@@ -1,6 +1,6 @@
 #pragma once
-#ifndef ENGINE
-#define ENGINE
+#ifndef ENGINE_H_SCIOTO
+#define ENGINE_H_SCIOTO
 
 #include "Debug.h"
 #include "Shader.h"

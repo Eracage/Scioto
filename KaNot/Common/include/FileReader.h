@@ -1,6 +1,6 @@
 #pragma once
-#ifndef FILE_READER
-#define FILE_READER
+#ifndef FILEREADER_H_SCIOTO
+#define FILEREADER_H_SCIOTO
 
 #include <stdio.h>
 #include "OpenGL.h"

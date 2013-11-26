@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SHADER_H
-#define SHADER_H
+#ifndef SHADER_H_SCIOTO
+#define SHADER_H_SCIOTO
 
 #include "OpenGL.h"
 #include "Debug.h"

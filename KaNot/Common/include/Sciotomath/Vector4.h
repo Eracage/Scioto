@@ -1,5 +1,6 @@
-#ifndef VECTOR4_H
-#define VECTOR4_H
+#pragma once
+#ifndef VECTOR4_H_SCIOTO
+#define VECTOR4_H_SCIOTO
 
 namespace Scioto
 
@@ -16,10 +17,11 @@ namespace Scioto
 
 			float x,y,z,w;
 
-
 		private:
-
+			float& operator [](const unsigned int& index);
+			friend class Matrix4;
 		};
+	
 
 	Vector4 operator -(const Vector4& RightVal);
 
@@ -39,5 +41,6 @@ namespace Scioto
 	Vector4 operator *(const float& LeftVal, const Vector4& RightVal);
 
 	Vector4& operator *=(Vector4& LeftVal, const float& RightVal);
+
 }
 #endif

@@ -1,5 +1,6 @@
-#ifndef DEBUG_H
-#define DEBUG_H
+#pragma once
+#ifndef DEBUG_H_SCIOTO
+#define DEBUG_H_SCIOTO
 
 #include "OpenGL.h"
 

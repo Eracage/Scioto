@@ -1,4 +1,3 @@
-#define PI 3.14159265358979323846264
 #include <cmath>
 #include <Sciotomath/Math.h>
 
@@ -38,6 +37,17 @@ Vector4::Vector4()
 			return angle;
 		}
 	}*/
+
+	// Operators
+
+	// Private
+	
+	float& Vector4::operator [](const unsigned int& index)
+	{
+		return (&x)[index];
+	}
+
+	// Public
 
 	Vector4 operator -(const Vector4& RightVal)
 	{

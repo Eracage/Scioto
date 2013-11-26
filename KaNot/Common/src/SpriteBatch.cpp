@@ -8,7 +8,7 @@ namespace Scioto
 	{
 		
 		// Making default shader
-		const char gVertexShader[] = 
+		const char gVertexShader0[] = 
 		"attribute vec3 vPosition;\n"
 		"attribute vec2 vUv;\n"
 		"uniform mat4 Projection;\n"
@@ -25,7 +25,7 @@ namespace Scioto
 		"  Uv = vUv;\n"
 		"}\n";
 
-		const char gFragmentShader[] = 
+		const char gFragmentShader0[] = 
 		"precision mediump float;\n"
 		"varying vec2 Uv;\n"
 		"uniform sampler2D s_texture;\n"
@@ -33,11 +33,11 @@ namespace Scioto
 		"  gl_FragColor = texture2D(s_texture,Uv);\n"
 		"}\n";
 		
-		m_shaders.push_back(new Shader(gVertexShader,gFragmentShader));
+		m_shaders.push_back(new Shader(gVertexShader0,gFragmentShader0));
 
 
 		// Making default sprite shader
-		const char gVertexShader[] = 
+		const char gVertexShader1[] = 
 		"attribute vec3 vPosition;\n"
 		"attribute vec2 vUv;\n"
 		"uniform mat4 Projection;\n"
@@ -54,7 +54,7 @@ namespace Scioto
 		"  Uv = vUv;\n"
 		"}\n";
 
-		const char gFragmentShader[] = 
+		const char gFragmentShader1[] = 
 		"precision mediump float;\n"
 		"varying vec2 Uv;\n"
 		"uniform sampler2D s_texture;\n"
@@ -62,7 +62,7 @@ namespace Scioto
 		"  gl_FragColor = texture2D(s_texture,Uv);\n"
 		"}\n";
 		
-		m_shaders.push_back(new Shader(gVertexShader,gFragmentShader));
+		m_shaders.push_back(new Shader(gVertexShader1,gFragmentShader1));
 
 
 		Init();

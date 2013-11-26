@@ -1,11 +1,8 @@
-#define PI 3.14159265358979323846264
 #include <cmath>
 #include <Sciotomath/Math.h>
 
 namespace Scioto
 {
-	////// Vector 2
-
 	Vector2::Vector2()
 			: x(0), y(0)
 	{}

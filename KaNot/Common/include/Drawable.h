@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DRAWABLE_H
-#define	DRAWABLE_H
+#ifndef DRAWABLE_H_SCIOTO
+#define DRAWABLE_H_SCIOTO
 
 namespace Scioto
 {

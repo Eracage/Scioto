@@ -1,6 +1,6 @@
 #pragma once
-#ifndef TEXTURE_H
-#define	TEXTURE_H
+#ifndef TEXTURE_H_SCIOTO
+#define TEXTURE_H_SCIOTO
 
 #include "Debug.h"
 #include <stdio.h>

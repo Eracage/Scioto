@@ -1,6 +1,6 @@
 #pragma once
-#ifndef OPENGL_H
-#define OPENGL_H
+#ifndef OPENGL_H_SCIOTO
+#define OPENGL_H_SCIOTO
 
 #ifdef _WIN32
 #include "OpenGLDeclarator.h"

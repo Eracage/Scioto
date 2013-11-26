@@ -1,5 +1,6 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#pragma once
+#ifndef VECTOR_H_SCIOTO
+#define VECTOR_H_SCIOTO
 
 #include "Sciotomath/Vector2.h"
 #include "Sciotomath/Vector3.h"

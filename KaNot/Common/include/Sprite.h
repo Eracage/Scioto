@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SPRITE_H
-#define SPRITE_H
+#ifndef SPRITE_H_SCIOTO
+#define SPRITE_H_SCIOTO
 
 #include "Viewport.h"
 #include "Shader.h"

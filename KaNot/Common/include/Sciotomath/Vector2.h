@@ -1,12 +1,9 @@
-#ifndef VECTOR2_H
-#define VECTOR2_H
-
+#pragma once
+#ifndef VECTOR2_H_SCIOTO
+#define VECTOR2_H_SCIOTO
 
 namespace Scioto
-
-{	
-
-
+{
 	class Vector2
 		{
 		public:
