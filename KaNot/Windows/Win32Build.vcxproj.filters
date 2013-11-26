@@ -99,6 +99,12 @@
     <ClInclude Include="..\Common\include\Sciotomath\Matrix4.h">
       <Filter>Common\include\Sciotomath</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\Sciotomath\Matrix.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Sciotomath\Matrix3.h">
+      <Filter>Common\include\Sciotomath</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -156,6 +162,9 @@
       <Filter>Common\src</Filter>
     </ClCompile>
     <ClCompile Include="..\Common\src\Sciotomath\Matrix4.cpp">
+      <Filter>Common\src\Sciotomath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\Sciotomath\Matrix3.cpp">
       <Filter>Common\src\Sciotomath</Filter>
     </ClCompile>
   </ItemGroup>

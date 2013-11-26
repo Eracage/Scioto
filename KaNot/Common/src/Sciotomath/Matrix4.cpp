@@ -10,6 +10,13 @@ namespace Scioto
 		c3(Vector4(0.f,0.f,1.f,0.f)),
 		c4(Vector4(0.f,0.f,0.f,1.f))
 	{}
+	Matrix4::Matrix4(const float* fe)
+		:
+		c1(fe[0],fe[1],fe[2],fe[3]),
+		c2(fe[4],fe[5],fe[6],fe[7]),
+		c3(fe[8],fe[9],fe[10],fe[11]),
+		c4(fe[12],fe[13],fe[14],fe[15])
+	{}
 	Matrix4::Matrix4(const Matrix3 mat3)
 		:
 		c1(mat3[0],0.f),
@@ -42,7 +49,7 @@ namespace Scioto
 	Matrix4::~Matrix4()
 	{}
 	
-	float* Matrix4::GetElements()
+	float* Matrix4::FirstElement()
 	{
 		return &c1.x;
 	}
@@ -78,6 +85,22 @@ namespace Scioto
 			);
 	}
 	const Matrix4 operator *=(Matrix4& LeftVal, const Matrix4& RightVal)
+	{
+		LeftVal = LeftVal * RightVal;
+		return LeftVal;
+	}
+
+	
+	Vector4 operator *(const Vector4& R, const Matrix4& L)
+	{
+		return Vector4(
+			L[0][0] * R[0] + L[1][0] * R[1] + L[2][0] * R[2] + L[3][0] * R[3],
+			L[0][1] * R[0] + L[1][1] * R[1] + L[2][1] * R[2] + L[3][1] * R[3],
+			L[0][2] * R[0] + L[1][2] * R[1] + L[2][2] * R[2] + L[3][2] * R[3],
+			L[0][3] * R[0] + L[1][3] * R[1] + L[2][3] * R[2] + L[3][3] * R[3]
+			);
+	}
+	const Vector4 operator *=(Vector4& LeftVal, const Matrix4& RightVal)
 	{
 		LeftVal = LeftVal * RightVal;
 		return LeftVal;

@@ -13,6 +13,7 @@ namespace Scioto
 		Creates Identity Matrix
 		*/
 		Matrix3();
+		Matrix3(const float* FirstElement);
 		Matrix3(
 			const Vector3& Column1,
 			const Vector3& Column2,
@@ -23,7 +24,7 @@ namespace Scioto
 			const float& c3r1,const float& c3r2,const float& c3r3);
 		~Matrix3();
 
-		float* GetElements();
+		float* FirstElement();
 
 		const Vector3& operator [](const unsigned int& index) const;
 		Vector3& operator [](const unsigned int& index);

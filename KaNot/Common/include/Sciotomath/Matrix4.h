@@ -14,6 +14,7 @@ namespace Scioto
 		Creates Identity Matrix
 		*/
 		Matrix4();
+		Matrix4(const float* FirstElement);
 		Matrix4(const Matrix3 mat3);
 		Matrix4(
 			const Vector4& Column1,
@@ -27,7 +28,7 @@ namespace Scioto
 			const float& c4r1,const float& c4r2,const float& c4r3,const float& c4r4);
 		~Matrix4();
 
-		float* GetElements();
+		float* FirstElement();
 
 		const Vector4& operator [](const unsigned int& index) const;
 		Vector4& operator [](const unsigned int& index);
@@ -36,9 +37,12 @@ namespace Scioto
 		Vector4 c1,c2,c3,c4;
 
 	};
-
+	
 	Matrix4 operator *(const Matrix4& LeftVal, const Matrix4& RightVal);
 	const Matrix4 operator *=(Matrix4& LeftVal, const Matrix4& RightVal);
+
+	Vector4 operator *(const Vector4& LeftVal, const Matrix4& RightVal);
+	const Vector4 operator *=(Vector4& LeftVal, const Matrix4& RightVal);
 	
 }
 

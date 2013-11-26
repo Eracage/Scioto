@@ -9,6 +9,12 @@ namespace Scioto
 		c2(Vector3(0.f,1.f,0.f)),
 		c3(Vector3(0.f,0.f,1.f))
 	{}
+	Matrix3::Matrix3(const float* fe)
+		:
+		c1(fe[0],fe[1],fe[2]),
+		c2(fe[3],fe[4],fe[5]),
+		c3(fe[6],fe[7],fe[8])
+	{}
 	Matrix3::Matrix3(
 		const Vector3& Column1,
 		const Vector3& Column2,
@@ -30,7 +36,7 @@ namespace Scioto
 	Matrix3::~Matrix3()
 	{}
 	
-	float* Matrix3::GetElements()
+	float* Matrix3::FirstElement()
 	{
 		return &c1.x;
 	}
