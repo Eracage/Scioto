@@ -17,6 +17,7 @@
     <ClInclude Include="..\Common\include\FileReader.h" />
     <ClInclude Include="..\Common\include\OpenGL.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Math.h" />
+    <ClInclude Include="..\Common\include\Sciotomath\Matrix4.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Rectangle.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Vector.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Vector2.h" />
@@ -41,6 +42,7 @@
     <ClCompile Include="..\Common\src\Drawable.cpp" />
     <ClCompile Include="..\Common\src\Engine.cpp" />
     <ClCompile Include="..\Common\src\FileReader.cpp" />
+    <ClCompile Include="..\Common\src\Sciotomath\Matrix4.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Rectangle.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Vector2.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Vector3.cpp" />

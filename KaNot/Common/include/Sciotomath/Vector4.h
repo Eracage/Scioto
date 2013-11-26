@@ -6,21 +6,21 @@ namespace Scioto
 
 {
 	class Vector4
-		{
-		public:
-			Vector4();
-			Vector4(float X, float Y, float Z, float W);
-			~Vector4();
+	{
+	public:
+		Vector4();
+		Vector4(float X, float Y, float Z, float W);
+		~Vector4();
 
-			float getLenght();
-			//float getAngle();
+		float getLenght();
+		//float getAngle();
 
-			float x,y,z,w;
+		float x,y,z,w;
 
-		private:
-			float& operator [](const unsigned int& index);
-			friend class Matrix4;
-		};
+	private:
+		float& operator [](const unsigned int& index);
+		friend class Matrix4;
+	};
 	
 
 	Vector4 operator -(const Vector4& RightVal);
