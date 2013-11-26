@@ -37,6 +37,18 @@ namespace Scioto
 			return angle;
 		}
 	}*/
+	
+	// Public
+	// Operators
+	
+	const float& Vector3::operator [](const unsigned int& index) const
+	{
+		return (&x)[index];
+	}
+	float& Vector3::operator [](const unsigned int& index)
+	{
+		return (&x)[index];
+	}
 
 	Vector3 operator -(const Vector3& RightVal)
 	{

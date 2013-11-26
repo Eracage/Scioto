@@ -3,25 +3,24 @@
 #define VECTOR3_H_SCIOTO
 
 namespace Scioto
-
 {
-
 	class Vector3
-		{
-		public:
-			Vector3();
-			Vector3(float X, float Y, float Z);
-			~Vector3();
+	{
+	public:
+		Vector3();
+		Vector3(float X, float Y, float Z);
+		~Vector3();
 
-			float getLenght();
-			//float getAngle();
+		float getLenght();
+		//float getAngle();
 
-			float x,y,z;
+		float x,y,z;
+			
+		const float& operator [](const unsigned int& index) const;
+		float& operator [](const unsigned int& index);
+	private:
 
-
-		private:
-
-		};
+	};
 
 	Vector3 operator -(const Vector3& RightVal);
 

@@ -4,10 +4,17 @@
 
 namespace Scioto
 {
-Vector4::Vector4()
+	Vector4::Vector4()
 			: x(0), y(0),z(0),w(0)
 	{}
-	Vector4::Vector4(float X, float Y, float Z, float W)
+	Vector4::Vector4(const Vector3 Vec3, const float W)
+		: 
+		x(Vec3[0]),
+		y(Vec3[1]),
+		z(Vec3[2]),
+		w(W)
+	{}
+	Vector4::Vector4(const float X, const float Y, const float Z, const float W)
 		: x(X), y(Y), z(Z), w(W)
 	{}
 	Vector4::~Vector4(){}

@@ -3,6 +3,7 @@
 #define MATRIX4_H_SCIOTO
 
 #include <Sciotomath\Vector4.h>
+#include <Sciotomath\Matrix3.h>
 
 namespace Scioto
 {
@@ -13,6 +14,7 @@ namespace Scioto
 		Creates Identity Matrix
 		*/
 		Matrix4();
+		Matrix4(const Matrix3 mat3);
 		Matrix4(
 			const Vector4& Column1,
 			const Vector4& Column2,

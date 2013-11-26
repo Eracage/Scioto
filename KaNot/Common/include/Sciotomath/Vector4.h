@@ -2,14 +2,16 @@
 #ifndef VECTOR4_H_SCIOTO
 #define VECTOR4_H_SCIOTO
 
-namespace Scioto
+#include <Sciotomath\Vector3.h>
 
+namespace Scioto
 {
 	class Vector4
 	{
 	public:
 		Vector4();
-		Vector4(float X, float Y, float Z, float W);
+		Vector4(const Vector3 Vec3, const float W);
+		Vector4(const float X, const float Y, const float Z, const float W);
 		~Vector4();
 
 		float getLenght();

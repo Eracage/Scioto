@@ -5,10 +5,17 @@ namespace Scioto
 {
 	Matrix4::Matrix4()
 		:
-		c1(Vector4(1,0,0,0)),
-		c2(Vector4(0,1,0,0)),
-		c3(Vector4(0,0,1,0)),
-		c4(Vector4(0,0,0,1))
+		c1(Vector4(1.f,0.f,0.f,0.f)),
+		c2(Vector4(0.f,1.f,0.f,0.f)),
+		c3(Vector4(0.f,0.f,1.f,0.f)),
+		c4(Vector4(0.f,0.f,0.f,1.f))
+	{}
+	Matrix4::Matrix4(const Matrix3 mat3)
+		:
+		c1(mat3[0],0.f),
+		c2(mat3[1],0.f),
+		c3(mat3[2],0.f),
+		c4(0.f,0.f,0.f,1.f)
 	{}
 	Matrix4::Matrix4(
 		const Vector4& Column1,
