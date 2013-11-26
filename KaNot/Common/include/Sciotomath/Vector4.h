@@ -28,11 +28,11 @@ namespace Scioto
 	Vector4 operator +(const Vector4& LeftVal,const Vector4& RightVal);
 	Vector4 operator -(const Vector4& LeftVal,const Vector4& RightVal);
 
-	Vector4& operator +=(Vector4& LeftVal,const Vector4& RightVal);
-	Vector4& operator -=(Vector4& LeftVal,const Vector4& RightVal);
+	const Vector4& operator +=(Vector4& LeftVal,const Vector4& RightVal);
+	const Vector4& operator -=(Vector4& LeftVal,const Vector4& RightVal);
 
 	Vector4 operator /(const Vector4& LeftVal,const float& RightVal);
-	Vector4& operator /=(Vector4& LeftVal,const float& RightVal);
+	const Vector4& operator /=(Vector4& LeftVal,const float& RightVal);
 
 	bool operator ==(const Vector4& LeftVal,const Vector4& RightVal);
 	bool operator !=(const Vector4& LeftVal,const Vector4& RightVal);
@@ -40,7 +40,7 @@ namespace Scioto
 	Vector4 operator *(const Vector4& LeftVal, const float& RightVal);
 	Vector4 operator *(const float& LeftVal, const Vector4& RightVal);
 
-	Vector4& operator *=(Vector4& LeftVal, const float& RightVal);
+	const Vector4& operator *=(Vector4& LeftVal, const float& RightVal);
 
 }
 #endif

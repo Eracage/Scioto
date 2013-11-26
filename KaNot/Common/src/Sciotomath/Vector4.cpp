@@ -63,13 +63,13 @@ Vector4::Vector4()
 		return Vector4(LeftVal.x-RightVal.x,LeftVal.y-RightVal.y,LeftVal.z-RightVal.z,LeftVal.w-RightVal.w);
 	}
 
-	Vector4& operator +=(Vector4& LeftVal,const Vector4& RightVal)
+	const Vector4& operator +=(Vector4& LeftVal,const Vector4& RightVal)
 	{
 		LeftVal.x += RightVal.x;
 		LeftVal.y += RightVal.y;
 		return LeftVal;
 	}
-	Vector4& operator -=(Vector4& LeftVal,const Vector4& RightVal)
+	const Vector4& operator -=(Vector4& LeftVal,const Vector4& RightVal)
 	{
 		LeftVal.x -= RightVal.x;
 		LeftVal.y -= RightVal.y;
@@ -80,7 +80,7 @@ Vector4::Vector4()
 	{
 		return Vector4(LeftVal.x / RightVal,LeftVal.y / RightVal, LeftVal.z / RightVal, LeftVal.w / RightVal);
 	}
-	Vector4& operator /=(Vector4& LeftVal, const float& RightVal)
+	const Vector4& operator /=(Vector4& LeftVal, const float& RightVal)
 	{
 		LeftVal.x /= (float)RightVal;
 		LeftVal.y /= (float)RightVal;
@@ -109,7 +109,7 @@ Vector4::Vector4()
 		return Vector4(LeftVal * RightVal.x,LeftVal * RightVal.y, LeftVal * RightVal.z, LeftVal * RightVal.w);
 	}
 
-	Vector4& operator *=(Vector4& LeftVal,const float& RightVal)
+	const Vector4& operator *=(Vector4& LeftVal,const float& RightVal)
 	{
 		LeftVal.x *= RightVal;
 		LeftVal.y *= RightVal;

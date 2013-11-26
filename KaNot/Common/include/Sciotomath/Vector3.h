@@ -28,11 +28,11 @@ namespace Scioto
 	Vector3 operator +(const Vector3& LeftVal,const Vector3& RightVal);
 	Vector3 operator -(const Vector3& LeftVal,const Vector3& RightVal);
 
-	Vector3& operator +=(Vector3& LeftVal,const Vector3& RightVal);
-	Vector3& operator -=(Vector3& LeftVal,const Vector3& RightVal);
+	const Vector3& operator +=(Vector3& LeftVal,const Vector3& RightVal);
+	const Vector3& operator -=(Vector3& LeftVal,const Vector3& RightVal);
 
 	Vector3 operator /(const Vector3& LeftVal,const float& RightVal);
-	Vector3& operator /=(Vector3& LeftVal,const float& RightVal);
+	const Vector3& operator /=(Vector3& LeftVal,const float& RightVal);
 
 	bool operator ==(const Vector3& LeftVal,const Vector3& RightVal);
 	bool operator !=(const Vector3& LeftVal,const Vector3& RightVal);
@@ -40,6 +40,6 @@ namespace Scioto
 	Vector3 operator *(const Vector3& LeftVal, const float& RightVal);
 	Vector3 operator *(const float& LeftVal, const Vector3& RightVal);
 
-	Vector3& operator *=(Vector3& LeftVal, const float& RightVal);
-	}
+	const Vector3& operator *=(Vector3& LeftVal, const float& RightVal);
+}
 #endif

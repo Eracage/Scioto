@@ -52,13 +52,13 @@ namespace Scioto
 		return Vector3(LeftVal.x-RightVal.x,LeftVal.y-RightVal.y,LeftVal.z-RightVal.z);
 	}
 
-	Vector3& operator +=(Vector3& LeftVal,const Vector3& RightVal)
+	const Vector3& operator +=(Vector3& LeftVal,const Vector3& RightVal)
 	{
 		LeftVal.x += RightVal.x;
 		LeftVal.y += RightVal.y;
 		return LeftVal;
 	}
-	Vector3& operator -=(Vector3& LeftVal,const Vector3& RightVal)
+	const Vector3& operator -=(Vector3& LeftVal,const Vector3& RightVal)
 	{
 		LeftVal.x -= RightVal.x;
 		LeftVal.y -= RightVal.y;
@@ -69,7 +69,7 @@ namespace Scioto
 	{
 		return Vector3(LeftVal.x / RightVal,LeftVal.y / RightVal, LeftVal.z / RightVal);
 	}
-	Vector3& operator /=(Vector3& LeftVal, const float& RightVal)
+	const Vector3& operator /=(Vector3& LeftVal, const float& RightVal)
 	{
 		LeftVal.x /= (float)RightVal;
 		LeftVal.y /= (float)RightVal;
@@ -98,7 +98,7 @@ namespace Scioto
 		return Vector3(LeftVal * RightVal.x,LeftVal * RightVal.y, LeftVal * RightVal.z);
 	}
 
-	Vector3& operator *=(Vector3& LeftVal,const float& RightVal)
+	const Vector3& operator *=(Vector3& LeftVal,const float& RightVal)
 	{
 		LeftVal.x *= RightVal;
 		LeftVal.y *= RightVal;
