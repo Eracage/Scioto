@@ -38,16 +38,18 @@ Vector4::Vector4()
 		}
 	}*/
 
+	// Public
 	// Operators
-
-	// Private
 	
+	const float& Vector4::operator [](const unsigned int& index) const
+	{
+		return (&x)[index];
+	}
 	float& Vector4::operator [](const unsigned int& index)
 	{
 		return (&x)[index];
 	}
 
-	// Public
 
 	Vector4 operator -(const Vector4& RightVal)
 	{

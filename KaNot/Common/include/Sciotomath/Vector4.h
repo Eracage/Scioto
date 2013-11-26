@@ -17,9 +17,9 @@ namespace Scioto
 
 		float x,y,z,w;
 
-	private:
+		const float& operator [](const unsigned int& index) const;
 		float& operator [](const unsigned int& index);
-		friend class Matrix4;
+	private:
 	};
 	
 
