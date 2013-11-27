@@ -109,6 +109,19 @@ namespace Scioto
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
 
+		Vector4 pos(0.5f,0.5f,0.f,1.f);
+		
+		Matrix4* identity = new Matrix4();
+		float* nothing = identity->FirstElement();
+		Matrix4 proj(projection);
+		Matrix4 trans(translation);
+		Matrix4 rotat(rotation);
+		Matrix4 scal(scale);
+		pos *= scal;
+		pos *= rotat;
+		pos *= trans;
+		pos *= proj;
+
 		glUseProgram(shader->Program);
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vUv"));
