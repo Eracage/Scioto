@@ -94,10 +94,10 @@ namespace Scioto
 	Vector4 operator *(const Vector4& R, const Matrix4& L)
 	{
 		return Vector4(
-			L[0][0] * R[0] + L[0][1] * R[1] + L[0][2] * R[2] + L[0][3] * R[3],
-			L[1][0] * R[0] + L[1][1] * R[1] + L[1][2] * R[2] + L[1][3] * R[3],
-			L[2][0] * R[0] + L[2][1] * R[1] + L[2][2] * R[2] + L[2][3] * R[3],
-			L[3][0] * R[0] + L[3][1] * R[1] + L[3][2] * R[2] + L[3][3] * R[3]
+			L[0][0] * R[0] + L[1][0] * R[1] + L[2][0] * R[2] + L[3][0] * R[3],
+			L[0][1] * R[0] + L[1][1] * R[1] + L[2][1] * R[2] + L[3][1] * R[3],
+			L[0][2] * R[0] + L[1][2] * R[1] + L[2][2] * R[2] + L[3][2] * R[3],
+			L[0][3] * R[0] + L[1][3] * R[1] + L[2][3] * R[2] + L[3][3] * R[3]
 			);
 	}
 	const Vector4 operator *=(Vector4& LeftVal, const Matrix4& RightVal)
