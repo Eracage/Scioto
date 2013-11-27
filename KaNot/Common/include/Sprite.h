@@ -33,6 +33,7 @@ namespace Scioto
 		void Draw(Shader* shader, float* projection, float* translation, float* rotation, float* scale, GLuint VBO);
 
 		Texture2D* m_texture;
+		GLuint VBO;
 		
 		friend class SpriteBatch;
 	};
