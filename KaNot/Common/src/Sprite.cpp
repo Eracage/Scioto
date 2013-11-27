@@ -1,4 +1,5 @@
 #include <Sprite.h>
+#include <Sciotomath\Matrix4.h>
 
 namespace Scioto
 {
@@ -46,7 +47,20 @@ namespace Scioto
 	{
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
-			
+
+		Vector4 pos(100.f,-100.f,0.f,1.f);
+		
+		Matrix4* identity = new Matrix4();
+		float* nothing = identity->FirstElement();
+		Matrix4 proj(projection);
+		Matrix4 trans(translation);
+		Matrix4 rotat(rotation);
+		Matrix4 scal(scale);
+		pos *= scale;
+		pos *= rotat;
+		pos *= trans;
+		pos *= proj;
+
 		glUseProgram(shader->Program);
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vUv"));
@@ -66,16 +80,16 @@ namespace Scioto
 
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Projection"),
-			1,GL_FALSE,projection);
+			1,GL_FALSE,proj.FirstElement());
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Translation"),
-			1,GL_FALSE,translation);
+			1,GL_FALSE,nothing);
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Rotation"),
-			1,GL_FALSE,rotation);
+			1,GL_FALSE,nothing);
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Scale"),
-			1,GL_FALSE,scale);
+			1,GL_FALSE,nothing);
 
 		glBindBuffer(GL_ARRAY_BUFFER,VBO);
 		glDrawArrays(GL_TRIANGLES,0,6);
