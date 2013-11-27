@@ -12,6 +12,8 @@ namespace Scioto
 		: Drawable()
 	{
 		setTexture(texture);
+
+		glGenBuffers(1,&VBO);
 	}
 	Sprite::~Sprite(){}
 
@@ -45,10 +47,69 @@ namespace Scioto
 
 	void Sprite::Draw(Shader* shader, float* projection, float* translation, float* rotation, float* scale, GLuint VBO)
 	{
+		
+			//float* Data = (float*)malloc(30*sizeof(float));
+
+			//Data[0] = -0.5f; 
+			//Data[1] = -0.5f; 
+			//Data[2] = 0; 
+
+			//Data[3] = 0; 
+			//Data[4] = 0; 
+
+
+			//Data[5] = -0.5f; 
+			//Data[6] = 0.5f; 
+			//Data[7] = 0;
+
+			//Data[8] = 0; 
+			//Data[9] = 1; 
+
+
+			//Data[10] = 0.5f; 
+			//Data[11] = -0.5f; 
+			//Data[12] = 0; 
+
+			//Data[13] = 1; 
+			//Data[14] = 0; 
+   // 
+
+			//Data[15] = -0.5f; 
+			//Data[16] = 0.5f; 
+			//Data[17] = 0; 
+
+			//Data[18] = 0; 
+			//Data[19] = 1; 
+
+
+			//Data[20] = 0.5f; 
+			//Data[21] = 0.5f; 
+			//Data[22] = 0; 
+
+			//Data[23] = 1; 
+			//Data[24] = 1; 
+
+
+			//Data[25] = 0.5f; 
+			//Data[26] = -0.5f; 
+			//Data[27] = 0; 
+
+			//Data[28] = 1; 
+			//Data[29] = 0; 
+	
+			//glBindBuffer(GL_ARRAY_BUFFER,VBO); 
+  
+			//glBufferData(GL_ARRAY_BUFFER,sizeof(Data)*30,Data,GL_DYNAMIC_DRAW); 
+			//free(Data);
+
+
+
+
+
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
 
-		Vector4 pos(100.f,-100.f,0.f,1.f);
+		Vector4 pos(0.5f,0.5f,0.f,1.f);
 		
 		Matrix4* identity = new Matrix4();
 		float* nothing = identity->FirstElement();
@@ -56,7 +117,7 @@ namespace Scioto
 		Matrix4 trans(translation);
 		Matrix4 rotat(rotation);
 		Matrix4 scal(scale);
-		pos *= scale;
+		pos *= scal;
 		pos *= rotat;
 		pos *= trans;
 		pos *= proj;
@@ -89,7 +150,7 @@ namespace Scioto
 			1,GL_FALSE,nothing);
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Scale"),
-			1,GL_FALSE,nothing);
+			1,GL_FALSE,scal.FirstElement());
 
 		glBindBuffer(GL_ARRAY_BUFFER,VBO);
 		glDrawArrays(GL_TRIANGLES,0,6);

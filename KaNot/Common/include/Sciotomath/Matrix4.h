@@ -17,15 +17,15 @@ namespace Scioto
 		Matrix4(const float* FirstElement);
 		Matrix4(const Matrix3 mat3);
 		Matrix4(
-			const Vector4& Column1,
-			const Vector4& Column2,
-			const Vector4& Column3,
-			const Vector4& Column4);
+			const Vector4& Row1,
+			const Vector4& Row2,
+			const Vector4& Row3,
+			const Vector4& Row4);
 		Matrix4(
-			const float& c1r1,const float& c1r2,const float& c1r3,const float& c1r4,
-			const float& c2r1,const float& c2r2,const float& c2r3,const float& c2r4,
-			const float& c3r1,const float& c3r2,const float& c3r3,const float& c3r4,
-			const float& c4r1,const float& c4r2,const float& c4r3,const float& c4r4);
+			const float& r1s1,const float& r1s2,const float& r1s3,const float& r1s4,
+			const float& r2s1,const float& r2s2,const float& r2s3,const float& r2s4,
+			const float& r3s1,const float& r3s2,const float& r3s3,const float& r3s4,
+			const float& r4s1,const float& r4s2,const float& r4s3,const float& r4s4);
 		~Matrix4();
 
 		float* FirstElement();
@@ -34,7 +34,7 @@ namespace Scioto
 		Vector4& operator [](const unsigned int& index);
 
 	private:
-		Vector4 c1,c2,c3,c4;
+		Vector4 r1,r2,r3,r4;
 
 	};
 	
