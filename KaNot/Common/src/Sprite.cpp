@@ -117,6 +117,7 @@ namespace Scioto
 		Matrix4 trans(translation);
 		Matrix4 rotat(rotation);
 		Matrix4 scal(scale);
+		proj *= trans * rotat * scal;
 		pos *= scal;
 		pos *= rotat;
 		pos *= trans;
@@ -150,7 +151,7 @@ namespace Scioto
 			1,GL_FALSE,nothing);
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Scale"),
-			1,GL_FALSE,scal.FirstElement());
+			1,GL_FALSE,nothing);
 
 		glBindBuffer(GL_ARRAY_BUFFER,VBO);
 		glDrawArrays(GL_TRIANGLES,0,6);
