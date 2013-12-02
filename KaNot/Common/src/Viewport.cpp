@@ -3,32 +3,30 @@
 
 namespace Scioto
 {
-	float Viewport::m_scale, Viewport::m_blackbarH, Viewport::m_blackbarV;
+	//float Viewport::m_blackbarH, Viewport::m_blackbarV;
 
 	Viewport::Viewport(float desiredWidth,float desiredHeight,float width,float height)
+		: m_blackbarH(0),
+		  m_blackbarV(0),
+		  m_dWidth(desiredWidth),
+		  m_dHeight(desiredHeight),
+		  m_width(width),
+		  m_height(height)
 	{
 		FixAspectRatio(desiredWidth, desiredHeight, width, height);
-		
-		float Projection[16] = 
-		{
-			 1.0f/desiredWidth, 0,	0,	-1
+		setProjection(Matrix4(
+			1.0f/desiredWidth, 0,	0,	-1
 			,0,	1.0f/desiredHeight,	0,1
 			,0,	0,	1,	0
-			,0,	0,	0,	1
-		};
-
-		setProjection(Projection);
+			,0,	0,	0,	1));
 	}
 
 	Viewport::~Viewport()
 	{}
 	
-	void Viewport::setProjection(const float projectionMatrix[16])
+	void Viewport::setProjection(const Matrix4 projection)
 	{
-		for (int i = 0; i < 16; i++)
-		{
-			m_projection[i] = projectionMatrix[i];
-		}
+		m_projection = projection;
 	}
 
 	void Viewport::FixAspectRatio(float desiredWidth,float desiredHeight,float width,float height)
@@ -58,8 +56,8 @@ namespace Scioto
 			m_scale = width/desiredWidth;
 			m_blackbarV = (height-(m_scale*desiredHeight))/2;
 		}
-		 w = desiredWidth*m_scale;
-		 h = desiredHeight*m_scale;
+		w = desiredWidth*m_scale;
+		h = desiredHeight*m_scale;
 
 		glViewport((int)m_blackbarH, (int)m_blackbarV,(int)w,(int)h); // Sets up the OpenGL viewport
 	}

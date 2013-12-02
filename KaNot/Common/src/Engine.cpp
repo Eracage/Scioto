@@ -42,6 +42,12 @@ namespace Scioto
 	{
 		double deltaTime = m_timer->GetDeltaTime();
 		LOGI("%.5f	%.5f",deltaTime, m_timer->GetCurTime());
+		//Matrix4 a,b;
+		//for (int i = 0; i < 40000; i++)
+		//{
+		//	a = a * b;
+		//}
+
 
 		m_trotation += 0.1;
 		m_spritebatch->Draw(m_background);

@@ -30,7 +30,7 @@ namespace Scioto
 
 	private:
 		Sprite(Sprite& sprite);
-		void Draw(Shader* shader, float* projection, float* translation, float* rotation, float* scale, GLuint VBO);
+		void Draw(Shader* shader, const Matrix4 projection, const Matrix4 translation, const Matrix4 rotation, const Matrix4 scale, GLuint VBO);
 
 		Texture2D* m_texture;
 		GLuint VBO;

@@ -53,9 +53,9 @@ namespace Scioto
 		std::vector<float*> m_datas;
 		std::vector<GLuint> VBOs;
 		
-		float* m_scale;
-		float* m_translation;
-		float* m_rotation;
+		Matrix4 m_scale;
+		Matrix4 m_translation;
+		Matrix4 m_rotation;
 
 		Vector2 m_last_scale;
 		Vector3 m_last_position;

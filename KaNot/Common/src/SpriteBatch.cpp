@@ -137,10 +137,10 @@ namespace Scioto
 		if (scale == m_last_scale)
 			return;
 		
-		m_scale[0] = scale.x;
-		m_scale[5] = scale.y;
-		m_scale[10] = 1;
-		m_scale[15] = 1;
+		m_scale[0][0] = scale.x;
+		m_scale[1][1] = scale.y;
+		m_scale[2][2] = 1;
+		m_scale[3][3] = 1;
 
 		m_last_scale = scale;
 	}
@@ -154,13 +154,13 @@ namespace Scioto
 		if (position == m_last_position)
 			return;
 
-		m_translation[0] = 1;
-		m_translation[3] = (int)position.x;
-		m_translation[5] = 1;
-		m_translation[7] = (int)-position.y;
-		m_translation[10] = 1;
-		m_translation[11] = (int)position.z;
-		m_translation[15] = 1;
+		m_translation[0][0] = 1;
+		m_translation[0][3] = (int)position.x;
+		m_translation[1][1] = 1;
+		m_translation[1][3] = (int)-position.y;
+		m_translation[2][2] = 1;
+		m_translation[2][3] = (int)position.z;
+		m_translation[3][3] = 1;
 
 		m_last_position = position;
 	}
@@ -170,12 +170,12 @@ namespace Scioto
 		if(rotation == m_last_rotation)
 			return;
 
-		m_rotation[0] = std::cos(-rotation);
-		m_rotation[1] = -std::sin(-rotation);
-		m_rotation[4] = std::sin(-rotation);
-		m_rotation[5] = std::cos(-rotation);
-		m_rotation[10] = 1;
-		m_rotation[15] = 1;
+		m_rotation[0][0] = std::cos(-rotation);
+		m_rotation[0][1] = -std::sin(-rotation);
+		m_rotation[1][0] = std::sin(-rotation);
+		m_rotation[1][1] = std::cos(-rotation);
+		m_rotation[2][2] = 1;
+		m_rotation[3][3] = 1;
 
 		m_last_rotation = rotation;
 	}

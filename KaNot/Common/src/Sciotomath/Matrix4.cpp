@@ -63,8 +63,48 @@ namespace Scioto
 		return (&r1)[index];
 	}
 	
-	Matrix4 operator *(const Matrix4& R, const Matrix4& L)
+	Matrix4 operator *(const Matrix4& RM, const Matrix4& LM)
 	{
+		const float L[4][4] = 
+		{
+			LM[0][0],
+			LM[0][1],
+			LM[0][2],
+			LM[0][3],
+			LM[1][0],
+			LM[1][1],
+			LM[1][2],
+			LM[1][3],
+			LM[2][0],
+			LM[2][1],
+			LM[2][2],
+			LM[2][3],
+			LM[3][0],
+			LM[3][1],
+			LM[3][2],
+			LM[3][3]
+		};
+		const float R[4][4] = 
+		{
+			RM[0][0],
+			RM[0][1],
+			RM[0][2],
+			RM[0][3],
+			RM[1][0],
+			RM[1][1],
+			RM[1][2],
+			RM[1][3],
+			RM[2][0],
+			RM[2][1],
+			RM[2][2],
+			RM[2][3],
+			RM[3][0],
+			RM[3][1],
+			RM[3][2],
+			RM[3][3]
+		};
+
+
 		return Matrix4(
 			L[0][0] * R[0][0] + L[1][0] * R[0][1] + L[2][0] * R[0][2] + L[3][0] * R[0][3],
 			L[0][1] * R[0][0] + L[1][1] * R[0][1] + L[2][1] * R[0][2] + L[3][1] * R[0][3],
@@ -93,20 +133,6 @@ namespace Scioto
 	
 	Vector4 operator *(const Vector4& R, const Matrix4& L)
 	{
-		float x1 = L[0][0] * R[0];
-		float x2 = L[0][1] * R[1];
-		float x3 = L[0][2] * R[2];
-		float x4 = L[0][3] * R[3];
-		float x = L[0][0] * R[0] + L[0][1] * R[1] + L[0][2] * R[2] + L[0][3] * R[3];
-		float y = L[1][0] * R[0] + L[1][1] * R[1] + L[1][2] * R[2] + L[1][3] * R[3];
-		float z = L[2][0] * R[0] + L[2][1] * R[1] + L[2][2] * R[2] + L[2][3] * R[3];
-		float w = L[3][0] * R[0] + L[3][1] * R[1] + L[3][2] * R[2] + L[3][3] * R[3];
-		Vector4 aVector4(
-			L[0][0] * R[0] + L[1][0] * R[1] + L[2][0] * R[2] + L[3][0] * R[3],
-			L[0][1] * R[0] + L[1][1] * R[1] + L[2][1] * R[2] + L[3][1] * R[3],
-			L[0][2] * R[0] + L[1][2] * R[1] + L[2][2] * R[2] + L[3][2] * R[3],
-			L[0][3] * R[0] + L[1][3] * R[1] + L[2][3] * R[2] + L[3][3] * R[3]
-			);
 		return Vector4(
 			L[0][0] * R[0] + L[0][1] * R[1] + L[0][2] * R[2] + L[0][3] * R[3],
 			L[1][0] * R[0] + L[1][1] * R[1] + L[1][2] * R[2] + L[1][3] * R[3],

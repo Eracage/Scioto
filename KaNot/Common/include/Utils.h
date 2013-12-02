@@ -16,11 +16,26 @@ namespace Scioto
 	{
 	public:
 		Timer(); //initializes Timer class
+		/**
+		Sets timer start and memtime to current time
+		*/
 		void Reset();
+		/**
+		Updates memtime, returns the difference
+		*/
 		const long double GetDeltaTime();
-		const long double Update(); // updates current time
-		const long double GetMemTime() const; // returns time of last Update() event
-		const long double GetCurTime(); // returns time elapsed since program start
+		/**
+		Updates memtime
+		*/
+		const long double Update();
+		/**
+		Returns time elapsed since timer start
+		*/
+		const long double GetCurTime();
+		/**
+		Returns time of last Update() event
+		*/
+		const long double GetMemTime() const;
 
 	private:
 		long double m_startTime;

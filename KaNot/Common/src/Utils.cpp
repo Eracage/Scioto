@@ -44,11 +44,6 @@ const long double Timer::Update() // Updates memTime to be current time
 	return m_memTime = GetCurTime();
 }
 
-const long double Timer::GetMemTime() const // returns time from last Update or GetDeltaTime
-{
-	return m_memTime;
-}
-
 const long double Timer::GetCurTime() // returns time elapsed since timer last restarted
 {
 #ifdef _WIN32
@@ -61,6 +56,11 @@ const long double Timer::GetCurTime() // returns time elapsed since timer last r
     m_curTime = ((endCount.tv_sec * 1000000.0) + endCount.tv_usec);
 #endif
 	return (m_curTime - m_startTime) * 0.000001;
+}
+
+const long double Timer::GetMemTime() const // returns time from last Update or GetDeltaTime
+{
+	return m_memTime;
 }
 
 #ifdef _WIN32

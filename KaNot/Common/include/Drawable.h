@@ -46,7 +46,7 @@ namespace Scioto
 			float rotation = 0.0f,int shader = 0, float depth = 0.0f);
 		~Drawable();
 
-		virtual void Draw(Shader* shader, float* projection, float* translation, float* rotation, float* scale, GLuint VBO);
+		virtual void Draw(Shader* shader, const Matrix4 projection, const Matrix4 translation, const Matrix4 rotation, const Matrix4 scale, GLuint VBO);
 
 		Vector2 m_position;
 		Vector2 m_scale;
