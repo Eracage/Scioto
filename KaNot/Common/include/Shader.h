@@ -10,12 +10,11 @@ namespace Scioto
 	class Shader
 	{
 	public:
-		Shader(const char*,const char*);
+		Shader(const char VertexShaderCode[], const char FragmentShaderCode[]);
 		~Shader();
 
-		GLuint PS,VS,Position,Uv;
+		GLuint PS,VS;
 		GLuint Program;
-		GLuint loc,loc2,loc3,loc4,loc5;
 
 	private:
 		Shader(Shader& shader);

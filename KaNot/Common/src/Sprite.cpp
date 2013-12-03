@@ -45,7 +45,7 @@ namespace Scioto
 		return m_position;
 	}
 
-	void Sprite::Draw(Shader* shader, const Matrix4 projection, const Matrix4 translation, const Matrix4 rotation, const Matrix4 scale, GLuint VBO)
+	void Sprite::Draw(const Shader* shader, const Matrix4 projection, const Matrix4 translation, const Matrix4 rotation, const Matrix4 scale, GLuint VBO)
 	{
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
@@ -55,14 +55,13 @@ namespace Scioto
 		proj *= translation * rotation * scale;
 
 		glUseProgram(shader->Program);
+		glBindBuffer(GL_ARRAY_BUFFER,VBO);
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vUv"));
 
 		glUniform1i(
 			glGetUniformLocation(shader->Program,"s_texture"), 
 			0);
-
-		glGetUniformLocation(shader->Program,"s_texture");
 
 		glVertexAttribPointer(
 			glGetAttribLocation(shader->Program,"vPosition"),
@@ -84,10 +83,10 @@ namespace Scioto
 			glGetUniformLocation(shader->Program, "Scale"),
 			1,GL_FALSE,nothing);
 
-		glBindBuffer(GL_ARRAY_BUFFER,VBO);
 		glDrawArrays(GL_TRIANGLES,0,6);
 
 		glDisableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
 		glDisableVertexAttribArray(glGetAttribLocation(shader->Program,"vUv"));
+		glBindBuffer(GL_ARRAY_BUFFER,0);
 	}
 }

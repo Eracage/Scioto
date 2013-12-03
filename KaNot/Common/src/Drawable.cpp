@@ -50,5 +50,6 @@ namespace Scioto
 	Drawable::~Drawable()
 	{}
 
-	void Drawable::Draw(Shader* shader, const Matrix4 projection, const Matrix4 translation, const Matrix4 rotation, const Matrix4 scale, GLuint VBO){}
+	void Drawable::Draw(const Shader* shader, const Matrix4 projection, const Matrix4 translation, const Matrix4 rotation, const Matrix4 scale, GLuint VBO)
+	{}
 }

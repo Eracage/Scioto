@@ -18,6 +18,7 @@ Shader::Shader(const char VertexShaderCode[], const char FragmentShaderCode[])
 
     //finalize shader
     glLinkProgram(Program);
+	checkGlError("Shader Done");
 }
 
 Shader::~Shader()

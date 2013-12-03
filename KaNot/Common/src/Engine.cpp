@@ -19,7 +19,7 @@ namespace Scioto
 
 		m_texture = new Texture2D("SciotoLogo.tga");
 		m_texture2 = new Texture2D("Test.tga");
-		for (int i=0; i<10000;i++)
+		for (int i=0; i<6000;i++)
 		{
 			if (i%2)
 				m_sprites.push_back(new Sprite(m_texture));
@@ -33,6 +33,10 @@ namespace Scioto
 		m_trex = new Sprite(m_texture3);
 		m_trex->setPosition(Vector2(1800,1800));
 
+		a = Vector2(500,500);
+		b = Vector2(500,-500);
+		c = Vector2(-500,500);
+		d = Vector2(-500,-500);
 	}
 	Engine::~Engine()
 	{
@@ -42,15 +46,12 @@ namespace Scioto
 	{
 		double deltaTime = m_timer->GetDeltaTime();
 		LOGI("%.5f	%.5f",deltaTime, m_timer->GetCurTime());
-		//Matrix4 a,b;
-		//for (int i = 0; i < 40000; i++)
-		//{
-		//	a = a * b;
-		//}
 
 
 		m_trotation += 0.1;
 		m_spritebatch->Draw(m_background);
+
+
 		for (int i=0; i<m_sprites.size(); i++)
 		{
 			m_sprites[i]->setPosition(m_sprites[i]->getPosition()+Vector2(
@@ -67,6 +68,12 @@ namespace Scioto
 		else
 			m_trotation = -0.5;
 		m_spritebatch->Draw(m_trex);
+		
+		m_spritebatch->Draw(&a,0.0f,Vector2(800,800));
+		m_spritebatch->Draw(&b,0.0f,Vector2(800,800));
+		m_spritebatch->Draw(&c,0.0f,Vector2(800,800));
+		m_spritebatch->Draw(&d,0.0f,Vector2(800,800));
+
 	}
 
 	void Engine::Draw()

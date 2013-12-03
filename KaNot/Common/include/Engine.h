@@ -35,6 +35,11 @@ namespace Scioto
 			std::vector<Sprite*> m_sprites;
 			Sprite* m_trex;
 			float m_trotation;
+
+			Vector2 a;
+			Vector2 b;
+			Vector2 c;
+			Vector2 d;
 	};
 }
 #endif
