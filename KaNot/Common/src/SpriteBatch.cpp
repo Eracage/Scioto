@@ -85,7 +85,7 @@ namespace Scioto
 		float scale,float rotation,int shader)
 	{
 		const float vecLenght = vector2->getLenght();
-		const Vector2 scaleVec = Vector2(vecLenght,vecLenght*scale);
+		const Vector2 scaleVec = Vector2(vecLenght,vecLenght*scale*0.3);
 		const float vecRotation = vector2->getAngle() * PI / 180;
 
 		Drawable* d = new Drawable(vector2,position,scaleVec,vecRotation,shader,depth);
@@ -296,7 +296,7 @@ namespace Scioto
 			Data[31] = 0.0f;
 			Data[32] = 0.0f;
 
-			Data[33] = 0.8f;
+			Data[33] = 0.75f;
 			Data[34] = -0.3f;
 			Data[35] = 0.0f;
 	
