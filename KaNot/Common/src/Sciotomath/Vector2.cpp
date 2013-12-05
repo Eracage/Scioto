@@ -21,6 +21,8 @@ namespace Scioto
 		{
 			if (y > 0)
 				return 90;
+			else if (y == 0)
+				return 0;
 			return 270;
 		}
 		else
