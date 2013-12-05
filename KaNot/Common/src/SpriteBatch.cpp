@@ -318,29 +318,29 @@ namespace Scioto
 			float* Data = (float*)malloc(18*sizeof(float));
 
 			// 1
-			Data[0]  = -0.5f;
-			Data[1]  = 0.5f;
+			Data[0]  = 0.0f;
+			Data[1]  = -1.0f;
 			Data[2]  = 0.0f;
 
-			Data[3]  = 0.5f;
-			Data[4]  = 0.5f;
+			Data[3]  = 1.0f;
+			Data[4]  = -1.0f;
 			Data[5]  = 0.0f;
 
-			Data[6]  = 0.5f;
-			Data[7]  = -0.5f;
+			Data[6]  = 1.0f;
+			Data[7]  = 0.0f;
 			Data[8]  = 0.0f;
 
 			// 2
-			Data[9]  = 0.5f;
-			Data[10] = -0.5f;
+			Data[9]  = 1.0f;
+			Data[10] = 0.0f;
 			Data[11] = 0.0f;
 
-			Data[12] = -0.5f;
-			Data[13] = -0.5f;
+			Data[12] = 0.0f;
+			Data[13] = 0.0f;
 			Data[14] = 0.0f;
 
-			Data[15] = -0.5f;
-			Data[16] = 0.5f;
+			Data[15] = 0.0f;
+			Data[16] = -1.0f;
 			Data[17] = 0.0f;
 	
 			glBindBuffer(GL_ARRAY_BUFFER,VBOs[Drawable::DrawableType::DrawRectangle]); 
