@@ -15,6 +15,7 @@
     <ClInclude Include="..\Common\include\Drawable.h" />
     <ClInclude Include="..\Common\include\Engine.h" />
     <ClInclude Include="..\Common\include\FileReader.h" />
+    <ClInclude Include="..\Common\include\IndexBuffer.h" />
     <ClInclude Include="..\Common\include\OpenGL.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Math.h" />
     <ClInclude Include="..\Common\include\Sciotomath\Matrix.h" />
@@ -30,6 +31,8 @@
     <ClInclude Include="..\Common\include\SpriteBatch.h" />
     <ClInclude Include="..\Common\include\Texture.h" />
     <ClInclude Include="..\Common\include\Utils.h" />
+    <ClInclude Include="..\Common\include\VertexArray.h" />
+    <ClInclude Include="..\Common\include\VertexBuffer.h" />
     <ClInclude Include="..\Common\include\Viewport.h" />
     <ClInclude Include="include\OpenGLDeclarator.h" />
     <ClInclude Include="include\Win32toAndroid.h" />
@@ -44,6 +47,7 @@
     <ClCompile Include="..\Common\src\Drawable.cpp" />
     <ClCompile Include="..\Common\src\Engine.cpp" />
     <ClCompile Include="..\Common\src\FileReader.cpp" />
+    <ClCompile Include="..\Common\src\IndexBuffer.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Matrix3.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Matrix4.cpp" />
     <ClCompile Include="..\Common\src\Sciotomath\Rectangle.cpp" />
@@ -55,6 +59,8 @@
     <ClCompile Include="..\Common\src\SpriteBatch.cpp" />
     <ClCompile Include="..\Common\src\Texture.cpp" />
     <ClCompile Include="..\Common\src\Utils.cpp" />
+    <ClCompile Include="..\Common\src\VertexArray.cpp" />
+    <ClCompile Include="..\Common\src\VertexBuffer.cpp" />
     <ClCompile Include="..\Common\src\Viewport.cpp" />
     <ClCompile Include="src\OpenGLDeclarator.cpp" />
     <ClCompile Include="src\Window.cpp" />

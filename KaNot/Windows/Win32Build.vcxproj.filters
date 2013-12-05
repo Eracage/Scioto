@@ -105,6 +105,15 @@
     <ClInclude Include="..\Common\include\Sciotomath\Matrix3.h">
       <Filter>Common\include\Sciotomath</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\include\VertexArray.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\VertexBuffer.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\IndexBuffer.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -166,6 +175,15 @@
     </ClCompile>
     <ClCompile Include="..\Common\src\Sciotomath\Matrix3.cpp">
       <Filter>Common\src\Sciotomath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\VertexArray.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\VertexBuffer.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\src\IndexBuffer.cpp">
+      <Filter>Common\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

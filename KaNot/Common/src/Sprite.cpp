@@ -50,7 +50,9 @@ namespace Scioto
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
 
-		float* nothing = Matrix4().FirstElement();
+		Matrix4 a = Matrix4::Identity;
+		a.FirstElement();
+		const float* nothing = Matrix4::Identity.FirstElement();
 		Matrix4 proj(projection);
 		proj *= translation * rotation * scale;
 

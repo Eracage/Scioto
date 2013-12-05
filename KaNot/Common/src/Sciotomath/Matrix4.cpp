@@ -3,6 +3,8 @@
 
 namespace Scioto
 {
+	const Matrix4 Matrix4::Identity;
+	
 	Matrix4::Matrix4()
 		:
 		r1(Vector4(1.f,0.f,0.f,0.f)),
@@ -49,9 +51,9 @@ namespace Scioto
 	Matrix4::~Matrix4()
 	{}
 	
-	float* Matrix4::FirstElement()
+	float* Matrix4::FirstElement() const
 	{
-		return &r1.x;
+		return (float*)&r1.x;
 	}
 	
 	const Vector4& Matrix4::operator [](const unsigned int& index) const
