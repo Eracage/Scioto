@@ -40,6 +40,7 @@ namespace Scioto
 			Vector2 b;
 			Vector2 c;
 			Vector2 d;
+			Rectangle r;
 	};
 }
 #endif

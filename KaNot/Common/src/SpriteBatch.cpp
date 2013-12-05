@@ -14,6 +14,7 @@ namespace Scioto
 		"uniform mat4 Translation;\n"
 		"uniform mat4 Scale;\n"
 		"uniform mat4 Rotation;\n"
+		"uniform vec4 Color;\n"
 		"varying vec4 color;\n"
 		"void main() {\n"
 		"  gl_Position = vec4(vPosition,1.0);\n"
@@ -22,7 +23,7 @@ namespace Scioto
 		"  gl_Position *= Translation;\n"	
 		"  gl_Position *= Projection;\n"
 
-		"  color = vec4(0.9f,1.0f,0.4f,1.0f);\n"
+		"  color = Color;\n"
 		"}\n";
 
 		const char gFragmentShader0[] = 
@@ -81,28 +82,31 @@ namespace Scioto
 	{
 		m_drawables.push_back(drawable);
 	}
-	void SpriteBatch::Draw(Vector2* vector2, float depth, Vector2 position,
-		float scale,float rotation,int shader)
+	void SpriteBatch::Draw(Vector2* vector2,Vector2 position, float depth, Vector4 color,
+			Vector2 scale,float rotation,int shader)
 	{
 		const float vecLenght = vector2->getLenght();
-		const Vector2 scaleVec = Vector2(vecLenght,vecLenght*scale*0.3);
+		const Vector2 scaleVec = Vector2(vecLenght*scale.x,vecLenght*scale.y*0.3);
 		const float vecRotation = vector2->getAngle() * PI / 180;
 
-		Drawable* d = new Drawable(vector2,position,scaleVec,vecRotation,shader,depth);
+		Drawable* d = new Drawable(vector2,position,scaleVec,vecRotation,shader,depth,color);
 		m_onceDrawables.push_back(d);
 		m_drawables.push_back(d);
 	}
-	void SpriteBatch::Draw(Vector3* vector3, float depth, Vector2 position,
+	void SpriteBatch::Draw(Vector3* vector3,Vector2 position, float depth, Vector4 color,
 		Vector2 scale,float rotation,int shader)
 	{
-		Drawable* d = new Drawable(vector3,position,scale,rotation,shader,depth);
+		Drawable* d = new Drawable(vector3,position,scale,rotation,shader,depth,color);
 		m_onceDrawables.push_back(d);
 		m_drawables.push_back(d);
 	}
-	void SpriteBatch::Draw(Rectangle* rectangle, float depth, Vector2 position,
+	void SpriteBatch::Draw(Rectangle* rectangle,Vector2 position, float depth, Vector4 color,
 		Vector2 scale,float rotation,int shader)
 	{
-		Drawable* d = new Drawable(rectangle,position,scale,rotation,shader,depth);
+		const Vector2 scaleVec = Vector2(rectangle->width*scale.x,rectangle->height*scale.y);
+		const Vector2 posvec = Vector2(position.x+rectangle->left,position.y+rectangle->top);
+
+		Drawable* d = new Drawable(rectangle,posvec,scaleVec,rotation,shader,depth,color);
 		m_onceDrawables.push_back(d);
 		m_drawables.push_back(d);
 	}
@@ -306,6 +310,45 @@ namespace Scioto
 			free(Data);
 		}
 #pragma endregion
+
+#pragma region Rectangle
+		{
+			glGenBuffers(1,&VBOs[Drawable::DrawableType::DrawRectangle]);
+		
+			float* Data = (float*)malloc(18*sizeof(float));
+
+			// 1
+			Data[0]  = -0.5f;
+			Data[1]  = 0.5f;
+			Data[2]  = 0.0f;
+
+			Data[3]  = 0.5f;
+			Data[4]  = 0.5f;
+			Data[5]  = 0.0f;
+
+			Data[6]  = 0.5f;
+			Data[7]  = -0.5f;
+			Data[8]  = 0.0f;
+
+			// 2
+			Data[9]  = 0.5f;
+			Data[10] = -0.5f;
+			Data[11] = 0.0f;
+
+			Data[12] = -0.5f;
+			Data[13] = -0.5f;
+			Data[14] = 0.0f;
+
+			Data[15] = -0.5f;
+			Data[16] = 0.5f;
+			Data[17] = 0.0f;
+	
+			glBindBuffer(GL_ARRAY_BUFFER,VBOs[Drawable::DrawableType::DrawRectangle]); 
+  
+			glBufferData(GL_ARRAY_BUFFER,sizeof(Data)*18,Data,GL_DYNAMIC_DRAW); 
+			free(Data);
+		}
+#pragma endregion
 	}
 
 	void SpriteBatch::Sort(){}
@@ -353,6 +396,11 @@ namespace Scioto
 					glGetAttribLocation(shader->Program,"vPosition"),
 					3,GL_FLOAT,GL_FALSE,3*sizeof(GL_FLOAT),0);
 				
+				const float red = drawable->m_color.x;
+				const float green = drawable->m_color.y;
+				const float blue = drawable->m_color.z;
+				const float alpha = drawable->m_color.w;
+
 				glUniformMatrix4fv(
 					glGetUniformLocation(shader->Program, "Projection"),
 					1,GL_FALSE,m_viewport->m_projection.FirstElement());
@@ -365,6 +413,11 @@ namespace Scioto
 				glUniformMatrix4fv(
 					glGetUniformLocation(shader->Program, "Scale"),
 					1,GL_FALSE,m_scale.FirstElement());
+				glUniform4f(
+					glGetUniformLocation(shader->Program, "Color"),
+					red,green,blue,alpha
+					);
+				
 				
 				glDrawArrays(GL_TRIANGLES,0,12);
 
@@ -375,6 +428,45 @@ namespace Scioto
 		case Drawable::DrawableType::DrawVector3:
 			break;
 		case Drawable::DrawableType::DrawRectangle:
+			setTranslation(drawable->m_position,drawable->m_depth);
+				setScale(drawable->m_scale);
+				setRotation(drawable->m_rotation);
+			
+				glDepthFunc(GL_LEQUAL);
+				glEnable(GL_DEPTH_TEST);
+
+				glDisable (GL_BLEND);
+				glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			
+				glUseProgram(shader->Program);
+				glBindBuffer(GL_ARRAY_BUFFER,VBOs[drawable->m_type]);
+				glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
+				
+				glVertexAttribPointer(
+					glGetAttribLocation(shader->Program,"vPosition"),
+					3,GL_FLOAT,GL_FALSE,3*sizeof(GL_FLOAT),0);
+				
+				glUniformMatrix4fv(
+					glGetUniformLocation(shader->Program, "Projection"),
+					1,GL_FALSE,m_viewport->m_projection.FirstElement());
+				glUniformMatrix4fv(
+					glGetUniformLocation(shader->Program, "Translation"),
+					1,GL_FALSE,m_translation.FirstElement());
+				glUniformMatrix4fv(
+					glGetUniformLocation(shader->Program, "Rotation"),
+					1,GL_FALSE,m_rotation.FirstElement());
+				glUniformMatrix4fv(
+					glGetUniformLocation(shader->Program, "Scale"),
+					1,GL_FALSE,m_scale.FirstElement());
+				glUniform4f(
+					glGetUniformLocation(shader->Program, "Color"),
+					0.1f,0.9f,1.0f,1.0f
+					);
+				
+				glDrawArrays(GL_TRIANGLES,0,6);
+
+				glDisableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
+				glBindBuffer(GL_ARRAY_BUFFER,0);
 			break;
 		}
 	

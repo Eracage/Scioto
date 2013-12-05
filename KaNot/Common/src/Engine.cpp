@@ -37,6 +37,7 @@ namespace Scioto
 		b = Vector2(500,-500);
 		c = Vector2(0,800);
 		d = Vector2(-800,200);
+		r = Rectangle(a,d);
 	}
 	Engine::~Engine()
 	{
@@ -69,10 +70,11 @@ namespace Scioto
 			m_trotation = -0.5;
 		m_spritebatch->Draw(m_trex);
 		
-		m_spritebatch->Draw(&a,0.0f);
-		m_spritebatch->Draw(&b,0.0f,a);
-		m_spritebatch->Draw(&c,0.0f,a+b);
-		m_spritebatch->Draw(&d,0.0f,a+b+c);
+		m_spritebatch->Draw(&a);
+		m_spritebatch->Draw(&b,a,0.0f,Vector4(0.0f,1.0f,0.0f,1.0f));
+		m_spritebatch->Draw(&c,a+b);
+		m_spritebatch->Draw(&d,a+b+c);
+		m_spritebatch->Draw(&r);
 
 	}
 
