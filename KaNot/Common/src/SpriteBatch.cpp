@@ -356,7 +356,12 @@ namespace Scioto
 	void SpriteBatch::AddDraw(Drawable* drawable)
 	{
 		
+		
 		const Shader* shader = m_shaders[drawable->m_shader];
+
+		glUniformMatrix4fv(
+			glGetUniformLocation(shader->Program, "Projection"),
+			1,GL_FALSE,m_viewport->m_projection.FirstElement());
 
 		switch (drawable->m_type)
 		{

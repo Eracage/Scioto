@@ -71,9 +71,9 @@ namespace Scioto
 		m_spritebatch->Draw(m_trex);
 		
 		m_spritebatch->Draw(&a);
-		m_spritebatch->Draw(&b,a,0.0f,Vector4(0.0f,1.0f,0.0f,1.0f));
-		m_spritebatch->Draw(&c,a+b);
-		m_spritebatch->Draw(&d,a+b+c);
+		//m_spritebatch->Draw(&b,a,0.0f,Vector4(0.0f,1.0f,0.0f,1.0f));
+		//m_spritebatch->Draw(&c,a+b);
+		//m_spritebatch->Draw(&d,a+b+c);
 		m_spritebatch->Draw(&r);
 
 	}

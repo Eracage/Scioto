@@ -73,9 +73,6 @@ namespace Scioto
 			2,GL_FLOAT,GL_FALSE,5*sizeof(GL_FLOAT),(void*)(sizeof(GL_FLOAT)*3));
 
 		glUniformMatrix4fv(
-			glGetUniformLocation(shader->Program, "Projection"),
-			1,GL_FALSE,proj.FirstElement());
-		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Translation"),
 			1,GL_FALSE,nothing);
 		glUniformMatrix4fv(
