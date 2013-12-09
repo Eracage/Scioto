@@ -45,6 +45,7 @@ namespace Scioto
 
 	void Engine::Update()
 	{
+		checkGlError("update");
 		double deltaTime = m_timer->GetDeltaTime();
 		LOGI("%.5f	%.5f",deltaTime, m_timer->GetCurTime());
 

@@ -355,13 +355,17 @@ namespace Scioto
 
 	void SpriteBatch::AddDraw(Drawable* drawable)
 	{
-		
+		checkGlError("startDraw");
 		
 		const Shader* shader = m_shaders[drawable->m_shader];
+		glUseProgram(shader->Program);
+
 
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Projection"),
 			1,GL_FALSE,m_viewport->m_projection.FirstElement());
+
+		checkGlError("proj");
 
 		switch (drawable->m_type)
 		{
@@ -380,6 +384,8 @@ namespace Scioto
 
 			drawable->Draw(shader,m_viewport->m_projection,m_translation,m_rotation, m_scale,VBOs[drawable->m_type]);
 			
+			checkGlError("External draw");
+
 			break;
 		case Drawable::DrawableType::DrawVector2:
 			{
@@ -393,7 +399,7 @@ namespace Scioto
 				glDisable (GL_BLEND);
 				glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			
-				glUseProgram(shader->Program);
+				//glUseProgram(shader->Program);
 				glBindBuffer(GL_ARRAY_BUFFER,VBOs[drawable->m_type]);
 				glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
 				
@@ -406,9 +412,9 @@ namespace Scioto
 				const float blue = drawable->m_color.z;
 				const float alpha = drawable->m_color.w;
 
-				glUniformMatrix4fv(
-					glGetUniformLocation(shader->Program, "Projection"),
-					1,GL_FALSE,m_viewport->m_projection.FirstElement());
+				//glUniformMatrix4fv(
+				//	glGetUniformLocation(shader->Program, "Projection"),
+				//	1,GL_FALSE,m_viewport->m_projection.FirstElement());
 				glUniformMatrix4fv(
 					glGetUniformLocation(shader->Program, "Translation"),
 					1,GL_FALSE,m_translation.FirstElement());
@@ -443,7 +449,7 @@ namespace Scioto
 				glDisable (GL_BLEND);
 				glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			
-				glUseProgram(shader->Program);
+				//glUseProgram(shader->Program);
 				glBindBuffer(GL_ARRAY_BUFFER,VBOs[drawable->m_type]);
 				glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
 				
@@ -451,9 +457,9 @@ namespace Scioto
 					glGetAttribLocation(shader->Program,"vPosition"),
 					3,GL_FLOAT,GL_FALSE,3*sizeof(GL_FLOAT),0);
 				
-				glUniformMatrix4fv(
-					glGetUniformLocation(shader->Program, "Projection"),
-					1,GL_FALSE,m_viewport->m_projection.FirstElement());
+				//glUniformMatrix4fv(
+				//	glGetUniformLocation(shader->Program, "Projection"),
+				//	1,GL_FALSE,m_viewport->m_projection.FirstElement());
 				glUniformMatrix4fv(
 					glGetUniformLocation(shader->Program, "Translation"),
 					1,GL_FALSE,m_translation.FirstElement());
@@ -475,6 +481,7 @@ namespace Scioto
 			break;
 		}
 	
+		checkGlError("endDraw");
 	}
 
 }

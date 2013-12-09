@@ -53,10 +53,10 @@ namespace Scioto
 		Matrix4 a = Matrix4::Identity;
 		a.FirstElement();
 		const float* nothing = Matrix4::Identity.FirstElement();
-		Matrix4 proj(projection);
-		proj *= translation * rotation * scale;
+		Matrix4 trans(translation);
+		trans *= rotation * scale;
 
-		glUseProgram(shader->Program);
+		//glUseProgram(shader->Program);
 		glBindBuffer(GL_ARRAY_BUFFER,VBO);
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vPosition"));
 		glEnableVertexAttribArray(glGetAttribLocation(shader->Program,"vUv"));
@@ -74,7 +74,7 @@ namespace Scioto
 
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Translation"),
-			1,GL_FALSE,nothing);
+			1,GL_FALSE,trans.FirstElement());
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Rotation"),
 			1,GL_FALSE,nothing);

@@ -50,6 +50,7 @@ namespace Scioto
 		virtual void Draw(const Shader* shader, const Matrix4 projection, const Matrix4 translation, const Matrix4 rotation, const Matrix4 scale, GLuint VBO);
 
 		Vector2 m_position;
+		//Vector2 m_origin;
 		Vector2 m_scale;
 		float m_rotation;
 		float m_depth;
