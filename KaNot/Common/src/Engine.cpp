@@ -33,11 +33,11 @@ namespace Scioto
 		m_trex = new Sprite(m_texture3);
 		m_trex->setPosition(Vector2(1800,1800));
 
-		a = Vector2(800,800);
+		a = Vector2(20,20);
 		b = Vector2(500,-500);
 		c = Vector2(0,800);
 		d = Vector2(-800,200);
-		r = Rectangle(a,d);
+		r = Rectangle(a,a);
 	}
 	Engine::~Engine()
 	{

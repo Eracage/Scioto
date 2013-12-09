@@ -29,6 +29,28 @@ namespace Scioto
 		wndClass.lpszClassName = L"windowClass";
 		wndClass.hIconSm = NULL;
 
+		
+		DWORD wStyle = 
+			//WS_VISIBLE | 
+			//WS_POPUP | 
+			WS_OVERLAPPED |
+			//WS_VSCROLL |
+			WS_BORDER | 
+			WS_SYSMENU | 
+			WS_CAPTION | 
+			WS_MINIMIZEBOX |
+			WS_MAXIMIZEBOX |
+			//WS_THICKFRAME |
+			NULL;
+		
+		RECT windowRect;
+		windowRect.left = 0;
+		windowRect.top = 0;
+		windowRect.right = width;
+		windowRect.bottom = height;
+
+		AdjustWindowRect(&windowRect,wStyle,false);
+
 		//register window class
 		if(!RegisterClassEx(&wndClass))
 		{
@@ -36,7 +58,7 @@ namespace Scioto
 		}
 
 		//Creates window and return handle to it (a way to access the windows attributes)
-		handle = CreateWindowA("windowClass", windowName, WS_OVERLAPPED, 0, 0, width, height, NULL, NULL, instance, NULL);
+		handle = CreateWindowA("windowClass", windowName, wStyle, 0, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, NULL, NULL, instance, NULL);
 
 		if (handle == NULL)
 		{

@@ -15,8 +15,8 @@ namespace Scioto
 	{
 		FixAspectRatio(desiredWidth, desiredHeight, width, height);
 		setProjection(Matrix4(
-			1.0f/desiredWidth, 0,	0,	-1
-			,0,	1.0f/desiredHeight,	0,1
+			2.0f/desiredWidth, 0,	0,	-1
+			,0,	2.0f/desiredHeight,	0,1
 			,0,	0,	1,	0
 			,0,	0,	0,	1));
 	}
