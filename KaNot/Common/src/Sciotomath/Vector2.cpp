@@ -1,5 +1,5 @@
 #include <cmath>
-#include <Sciotomath/Math.h>
+#include "Sciotomath/Math.h"
 
 namespace Scioto
 {
@@ -11,30 +11,43 @@ namespace Scioto
 	{}
 	Vector2::~Vector2(){}
 
-	float Vector2::getLenght()
+	float Vector2::getLenght() const
 	{	
 		return sqrt(pow(x,2) + pow(y,2));
 	}
-	float Vector2::getAngle()
+	float Vector2::getRadians() const
 	{
-		if (x == 0)
-		{
-			if (y > 0)
-				return 90;
-			return 270;
-		}
-		else
-		{
-			float angle = float(atan(y/x)*(180.0f/PI));
+		return atan2(y,x);
+	}
+	float Vector2::getAngle() const
+	{
+		return getRadians()*180.0/PI;
+	}
 
-			if (x < 0)
-				angle += 180;
+	void Vector2::transform(const Vector2 position)
+	{
+		x += position.x;
+		y += position.y;
+	}
+	void Vector2::rotateDegrees(const float degrees)
+	{
+		rotate(degrees/180*PI);
+	}
+	void Vector2::rotate(const float radians)
+	{
+		if (radians == 0)
+			return;
 
-			else if (angle < 0)
-				angle += 360;
-
-			return angle;
-		}
+		const float cosA = cos(radians);
+		const float sinA = sin(radians);
+		const float oldX = x;
+		x = oldX*cosA-y*sinA;
+		y = oldX*sinA+y*cosA;
+	}
+	void Vector2::scale(const Vector2 scale)
+	{
+		x*=scale.x;
+		y*=scale.y;
 	}
 
 	Vector2 operator -(const Vector2& RightVal)

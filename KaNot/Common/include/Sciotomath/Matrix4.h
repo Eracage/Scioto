@@ -26,9 +26,10 @@ namespace Scioto
 			const float& r2s1,const float& r2s2,const float& r2s3,const float& r2s4,
 			const float& r3s1,const float& r3s2,const float& r3s3,const float& r3s4,
 			const float& r4s1,const float& r4s2,const float& r4s3,const float& r4s4);
+		static const Matrix4 Identity;
 		~Matrix4();
 
-		float* FirstElement();
+		float* FirstElement() const;
 
 		const Vector4& operator [](const unsigned int& index) const;
 		Vector4& operator [](const unsigned int& index);
