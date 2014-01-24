@@ -50,11 +50,11 @@ namespace Scioto
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texture->GetGLTextureID());
 
-		Matrix4 a = Matrix4::Identity;
-		a.FirstElement();
-		const float* nothing = Matrix4::Identity.FirstElement();
-		Matrix4 trans(translation);
-		trans *= rotation * scale;
+		//Matrix4 a = Matrix4::Identity;
+		//a.FirstElement();
+		//const float* nothing = Matrix4::Identity.FirstElement();
+		//Matrix4 trans(translation);
+		//trans *= rotation * scale;
 
 		//glUseProgram(shader->Program);
 		glBindBuffer(GL_ARRAY_BUFFER,VBO);
@@ -74,13 +74,13 @@ namespace Scioto
 
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Translation"),
-			1,GL_FALSE,trans.FirstElement());
+			1,GL_FALSE,translation.FirstElement());
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Rotation"),
-			1,GL_FALSE,nothing);
+			1,GL_FALSE,rotation.FirstElement());
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->Program, "Scale"),
-			1,GL_FALSE,nothing);
+			1,GL_FALSE,scale.FirstElement());
 
 		glDrawArrays(GL_TRIANGLES,0,6);
 

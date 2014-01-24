@@ -30,6 +30,7 @@ namespace Scioto
 		"varying vec4 color;\n"
 		"void main() {\n"
 		"  gl_FragColor = color;\n"
+		//"	gl_FragColor = vec4(0.5f,0.5f,0.5f,0.1f);"
 		"}\n";
 		
 		m_shaders.push_back(new Shader(gVertexShader0,gFragmentShader0));
@@ -396,7 +397,7 @@ namespace Scioto
 				glDepthFunc(GL_LEQUAL);
 				glEnable(GL_DEPTH_TEST);
 
-				glDisable (GL_BLEND);
+				glEnable (GL_BLEND);
 				glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			
 				//glUseProgram(shader->Program);
@@ -426,8 +427,7 @@ namespace Scioto
 					1,GL_FALSE,m_scale.FirstElement());
 				glUniform4f(
 					glGetUniformLocation(shader->Program, "Color"),
-					red,green,blue,alpha
-					);
+					red,green,blue,alpha);
 				
 				
 				glDrawArrays(GL_TRIANGLES,0,12);

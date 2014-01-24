@@ -14,7 +14,7 @@ namespace Scioto
 
 	float Vector3::getLenght()
 	{	
-		return sqrt(pow(x,2) + pow(y,2));
+		return sqrt(pow(x,2) + pow(y,2) + pow(z,2));
 	}
 	/*float Vector3::getAngle()
 	{
@@ -68,12 +68,14 @@ namespace Scioto
 	{
 		LeftVal.x += RightVal.x;
 		LeftVal.y += RightVal.y;
+		LeftVal.z += RightVal.z;
 		return LeftVal;
 	}
 	const Vector3& operator -=(Vector3& LeftVal,const Vector3& RightVal)
 	{
 		LeftVal.x -= RightVal.x;
 		LeftVal.y -= RightVal.y;
+		LeftVal.z -= RightVal.z;
 		return LeftVal;
 	}
 
@@ -85,20 +87,19 @@ namespace Scioto
 	{
 		LeftVal.x /= (float)RightVal;
 		LeftVal.y /= (float)RightVal;
+		LeftVal.z /= (float)RightVal;
 		return LeftVal;
 	}
 
 	bool operator ==(const Vector3& LeftVal,const Vector3& RightVal)
 	{
-		if (LeftVal.x == RightVal.x && LeftVal.y == RightVal.y)
+		if (LeftVal.x == RightVal.x && LeftVal.y == RightVal.y && LeftVal.z == RightVal.z)
 			return true;
 		return false;
 	}
 	bool operator !=(const Vector3& LeftVal,const Vector3& RightVal)
 	{
-		if (LeftVal.x == RightVal.x && LeftVal.y == RightVal.y)
-			return false;
-		return true;
+		return !(LeftVal == RightVal);
 	}
 
 	Vector3 operator *(const Vector3& LeftVal, const float& RightVal)
@@ -114,6 +115,7 @@ namespace Scioto
 	{
 		LeftVal.x *= RightVal;
 		LeftVal.y *= RightVal;
+		LeftVal.z *= RightVal;
 		return LeftVal;
 	}
 }
