@@ -25,6 +25,7 @@ Timer::Timer()
 void Timer::Reset()
 {
 #ifdef _WIN32
+	m_memTime = 0;
     QueryPerformanceCounter(&m_startCount);
 	m_startTime = m_startCount.QuadPart * (1000000.0 / m_frequency.QuadPart);
 #else
